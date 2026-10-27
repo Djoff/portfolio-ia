@@ -18,8 +18,9 @@ Options -Indexes
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # HTTP → HTTPS
+  # HTTP → HTTPS (aussi derrière le proxy TLS de l'hébergeur)
   RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
   # Racine : version anglaise si le navigateur la préfère, sinon française.

@@ -24,8 +24,8 @@ ignoreLogs = ["warning-goldmark-raw-html"]
   unsafe = false
 
 [params]
-  nom = "Geoffrey"
-  linkedin = "https://www.linkedin.com/"
+  nom = "Geoffrey Etwein"
+  linkedin = "https://www.linkedin.com/in/geoffrey-etwein/"
   github = "https://github.com/Djoff/portfolio-ia"
 
 # Les projets n'ont pas de page propre : ils ne s'affichent que sous forme de tuiles.

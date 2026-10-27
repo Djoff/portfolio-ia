@@ -35,4 +35,4 @@ A production pipeline where each script is written, tracked and verified before 
 
 ## Lessons learned
 
-The first version had 26 steps and was fragile; the simplified 17-step version is more reliable. Splitting "write" and "verify" into two separate agents is a principle I would reuse everywhere.
+The first version had 26 nodes and was fragile; the simplified 17-node version is easier to maintain. Splitting "write" and "verify" into two separate agents is a principle I would reuse everywhere.

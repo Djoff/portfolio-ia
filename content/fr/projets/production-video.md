@@ -35,4 +35,4 @@ Une chaîne de production où chaque script est rédigé, tracé et vérifié av
 
 ## Ce que j'en retiens
 
-La première version comptait 26 étapes et était fragile ; la version simplifiée à 17 étapes est plus fiable. Séparer « rédiger » et « vérifier » en deux agents distincts est un principe que je réutiliserais partout.
+La première version comptait 26 nœuds et était fragile ; la version simplifiée à 17 nœuds est plus simple à maintenir. Séparer « rédiger » et « vérifier » en deux agents distincts est un principe que je réutiliserais partout.

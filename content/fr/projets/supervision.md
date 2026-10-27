@@ -3,7 +3,7 @@ titre: "Supervision des automatisations"
 statut: "realise"
 date: 2026-04-06
 outils: ["n8n", "Telegram"]
-resume: "Toute erreur dans un workflow déclenche immédiatement une alerte sur mon téléphone."
+resume: "Quand un workflow échoue, une alerte arrive aussitôt sur mon téléphone."
 etapes:
   - { nom: "Erreur dans un workflow", type: "normal" }
   - { nom: "Capture de l'erreur", type: "controle" }
@@ -16,16 +16,17 @@ Une automatisation qui échoue en silence est pire qu'une absence d'automatisati
 
 ## Solution
 
-Un workflow dédié est déclenché par n8n dès qu'un autre workflow échoue. Il envoie aussitôt une alerte sur Telegram avec le nom du workflow et l'erreur.
+Un workflow d'erreur dédié est déclenché par n8n dès qu'un workflow qui y est rattaché échoue. Il envoie aussitôt une alerte sur Telegram avec le nom du workflow et l'erreur.
 
 ## Risques & garde-fous
 
-- **Échec silencieux** → toute erreur produit une alerte immédiate.
+- **Échec silencieux** → chaque erreur d'un workflow supervisé produit une alerte immédiate.
+- **Angle mort** → cette alerte ne couvre pas une panne de n8n lui-même : une surveillance externe reste à ajouter.
 - **Diagnostic lent** → l'alerte indique quel workflow a échoué et pourquoi.
 
 ## Résultat
 
-Les incidents sont connus en quelques secondes plutôt que découverts par hasard.
+Les incidents sont signalés dès qu'ils surviennent, au lieu d'être découverts par hasard.
 
 ## Ce que j'en retiens
 

@@ -84,6 +84,18 @@ assert_tree_not_contains() {
   [ -z "$hits" ] || fail "assert_tree_not_contains « $2 » présent dans : $hits"
 }
 
+# Fichiers suivis par git contenant <mot> (sans tenir compte de la casse).
+scan_depot() {
+  (git -C "$ROOT" ls-files -z | (cd "$ROOT" && xargs -0 grep -li -- "$1") ) || true
+}
+
+# Liste privée, un mot par ligne : variable DENYLIST (secret de la CI, mots séparés
+# par des virgules) et fichier local tests/.liste-privee, jamais versionné.
+liste_privee() {
+  if [ -n "${DENYLIST:-}" ]; then printf '%s\n' "$DENYLIST" | tr ',' '\n'; fi
+  if [ -f "$ROOT/tests/.liste-privee" ]; then tr -d '\r' < "$ROOT/tests/.liste-privee"; fi
+}
+
 # ---------------------------------------------------------------- tests
 
 test_scaffold() {
@@ -124,8 +136,8 @@ test_tuiles() {
   assert_contains "$fr" '<h3>Risques &amp; garde-fous</h3>'
   assert_contains "$en" '<h3>Problem</h3>'
   assert_not_contains "$en" 'Problème'
-  assert_contains "$fr" '<h1>Geoffrey</h1>'
-  assert_contains "$fr" 'href="https://www.linkedin.com/"'
+  assert_contains "$fr" '<h1>Geoffrey Etwein</h1>'
+  assert_contains "$fr" 'href="https://www.linkedin.com/in/geoffrey-etwein/"'
   assert_contains "$fr" 'href="https://github.com/Djoff/portfolio-ia"'
   assert_contains "$fr" 'Hébergé en Suisse'
 }
@@ -170,20 +182,40 @@ test_securite() {
   assert_contains "$h" 'geolocation=()'
   assert_contains "$h" 'Options -Indexes'
   assert_contains "$h" 'RewriteCond %{HTTP:Accept-Language} ^en'
+  # Derrière un proxy TLS (Infomaniak), %{HTTPS} seul provoquerait une boucle de redirection.
+  assert_contains "$h" 'RewriteCond %{HTTP:X-Forwarded-Proto} !https'
 }
 
 test_contenu() {
   build_ok contenu - OUT
   assert_count "$OUT/fr/index.html" 'class="tuile"' 5
   assert_count "$OUT/en/index.html" 'class="tuile"' 5
-  # Aucune donnée interne dans les textes publiés.
-  local mot hits
-  for mot in webhook api_key apikey chat_id token password 'http://' 'https://'; do
-    hits="$(grep -rli -- "$mot" "$ROOT/content" || true)"
-    [ -z "$hits" ] || fail "contenu : « $mot » trouvé dans $hits"
+  # Les textes des projets ne contiennent ni lien ni identifiant technique.
+  local motif hits
+  for motif in webhook api_key apikey chat_id 'http://' 'https://'; do
+    hits="$( (grep -rli -- "$motif" "$ROOT/content" "$ROOT/i18n" "$ROOT/data" || true) )"
+    [ -z "$hits" ] || fail "contenu : « $motif » trouvé dans $hits"
   done
 }
 
+test_fuites() {
+  # Le détecteur fonctionne : un mot présent dans le dépôt est bien trouvé.
+  [ -n "$(scan_depot kogito)" ] || fail "scan_depot ne trouve pas un mot présent"
+  # Aucun secret apparent dans les fichiers suivis.
+  local hits
+  hits="$( (git -C "$ROOT" ls-files -z | (cd "$ROOT" && xargs -0 grep -lE -- '(sk-[A-Za-z0-9]{16}|gh[pousr]_[A-Za-z0-9]{20}|xox[abp]-[A-Za-z0-9])') ) || true)"
+  [ -z "$hits" ] || fail "secret apparent dans : $hits"
+  # Liste privée (noms de clients, identifiants internes) : jamais dans le dépôt ni dans le site.
+  build_ok fuites - OUT
+  local mot n=0
+  while IFS= read -r mot; do
+    [ -n "$mot" ] || continue
+    n=$((n + 1))
+    hits="$(scan_depot "$mot")$( (grep -rli -- "$mot" "$OUT" || true) )"
+    [ -z "$hits" ] || fail "mot de la liste privée n°$n trouvé dans : $hits"
+  done < <(liste_privee)
+  [ "$n" -gt 0 ] || echo "    (liste privée absente : définir DENYLIST ou tests/.liste-privee)" >&2
+}
 # ---------------------------------------------------------------- exécution
 
 for t in $(declare -F | awk '{print $3}' | grep '^test_'); do
