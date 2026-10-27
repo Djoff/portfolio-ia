@@ -142,6 +142,22 @@ test_filtre() {
   assert_contains "$OUT/en/index.html" '>All</label>'
 }
 
+test_design() {
+  build_ok long tests/fixtures/long OUT
+  assert_tree_not_contains "$OUT" 'style='
+  assert_tree_not_contains "$OUT" '<script'
+  assert_tree_not_contains "$OUT" 'src="http'
+  local css="$OUT/css/site.css"
+  assert_contains "$css" 'prefers-color-scheme: dark'
+  assert_contains "$css" ':focus-visible'
+  assert_contains "$css" 'prefers-reduced-motion'
+  assert_contains "$css" '#f-realise:checked ~ .grille'
+  assert_contains "$css" '#b23a2b'
+  assert_contains "$css" '#e07a62'
+  assert_not_contains "$css" 'url(http'
+  assert_not_contains "$css" '@import'
+}
+
 # ---------------------------------------------------------------- exécution
 
 for t in $(declare -F | awk '{print $3}' | grep '^test_'); do
