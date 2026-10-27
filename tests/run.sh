@@ -130,6 +130,18 @@ test_tuiles() {
   assert_contains "$fr" 'Hébergé en Suisse'
 }
 
+test_filtre() {
+  build_ok filtre tests/fixtures/valide OUT
+  local fr="$OUT/fr/index.html"
+  assert_contains "$fr" 'id="f-tous" class="filtre__choix" checked'
+  assert_contains "$fr" 'id="f-realise"'
+  assert_contains "$fr" 'id="f-a-venir"'
+  assert_not_contains "$fr" 'id="f-en-cours"'
+  assert_contains "$fr" 'for="f-a-venir"'
+  assert_contains "$fr" 'role="group"'
+  assert_contains "$OUT/en/index.html" '>All</label>'
+}
+
 # ---------------------------------------------------------------- exécution
 
 for t in $(declare -F | awk '{print $3}' | grep '^test_'); do
