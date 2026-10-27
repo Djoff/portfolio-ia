@@ -172,6 +172,18 @@ test_securite() {
   assert_contains "$h" 'RewriteCond %{HTTP:Accept-Language} ^en'
 }
 
+test_contenu() {
+  build_ok contenu - OUT
+  assert_count "$OUT/fr/index.html" 'class="tuile"' 5
+  assert_count "$OUT/en/index.html" 'class="tuile"' 5
+  # Aucune donnée interne dans les textes publiés.
+  local mot hits
+  for mot in webhook api_key apikey chat_id token password 'http://' 'https://'; do
+    hits="$(grep -rli -- "$mot" "$ROOT/content" || true)"
+    [ -z "$hits" ] || fail "contenu : « $mot » trouvé dans $hits"
+  done
+}
+
 # ---------------------------------------------------------------- exécution
 
 for t in $(declare -F | awk '{print $3}' | grep '^test_'); do
