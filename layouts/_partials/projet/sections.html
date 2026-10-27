@@ -1,0 +1,22 @@
+{{- /* Découpe le corps d'un projet sur ses titres <h2>.
+       Renvoie un dict : probleme, solution, risques, resultat, lecons (HTML, "" si absent)
+       et inconnues (liste des titres non reconnus). */ -}}
+{{- $lang := .Language.Lang -}}
+{{- $titres := dict -}}
+{{- range $cle, $noms := hugo.Data.sections -}}
+  {{- $titres = merge $titres (dict (lower (replace (index $noms $lang) "’" "'")) $cle) -}}
+{{- end -}}
+{{- $res := dict "probleme" "" "solution" "" "risques" "" "resultat" "" "lecons" "" -}}
+{{- $inconnues := slice -}}
+{{- range after 1 (split (string .Content) "<h2") -}}
+  {{- $parts := split . "</h2>" -}}
+  {{- $titre := index $parts 0 | replaceRE `^[^>]*>` "" | plainify | htmlUnescape | strings.TrimSpace -}}
+  {{- $titre = replace $titre "’" "'" -}}
+  {{- $corps := delimit (after 1 $parts) "</h2>" | strings.TrimSpace -}}
+  {{- with index $titres (lower $titre) -}}
+    {{- $res = merge $res (dict . $corps) -}}
+  {{- else -}}
+    {{- $inconnues = $inconnues | append $titre -}}
+  {{- end -}}
+{{- end -}}
+{{- return merge $res (dict "inconnues" $inconnues) -}}

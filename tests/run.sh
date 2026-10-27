@@ -43,7 +43,7 @@ build_ok() {
   local name="$1" fixture="$2" var="$3" dir log
   dir="$(prepare "$name" "$fixture")"
   log="$dir/build.log"
-  if ! (cd "$dir" && "$HUGO" --quiet --panicOnWarning --destination "$dir/public") >"$log" 2>&1; then
+  if ! (cd "$dir" && "$HUGO" --panicOnWarning --destination "$dir/public") >"$log" 2>&1; then
     fail "build_ok $name: la construction a échoué"
     sed 's/^/      /' "$log" >&2
   fi
@@ -55,7 +55,7 @@ build_fails() {
   local name="$1" fixture="$2" expected="$3" dir log
   dir="$(prepare "$name" "$fixture")"
   log="$dir/build.log"
-  if (cd "$dir" && "$HUGO" --quiet --panicOnWarning --destination "$dir/public") >"$log" 2>&1; then
+  if (cd "$dir" && "$HUGO" --panicOnWarning --destination "$dir/public") >"$log" 2>&1; then
     fail "build_fails $name: la construction aurait dû échouer"
   elif ! grep -qF -- "$expected" "$log"; then
     fail "build_fails $name: message attendu « $expected » absent"
@@ -94,6 +94,19 @@ test_scaffold() {
   assert_contains "$OUT/fr/index.html" 'href="/css/site.css"'
   assert_not_contains "$OUT/fr/index.html" '<script'
   assert_not_contains "$OUT/fr/index.html" 'style='
+}
+
+test_validation() {
+  build_ok valide tests/fixtures/valide OUT
+  build_fails sans-titre           tests/fixtures/sans-titre           'champ manquant: titre'
+  build_fails statut-invalide      tests/fixtures/statut-invalide      'statut invalide: fini'
+  build_fails une-etape            tests/fixtures/une-etape            'au moins 2 etapes'
+  build_fails type-etape-invalide  tests/fixtures/type-etape-invalide  "type d'etape invalide: IA"
+  build_fails sans-traduction      tests/fixtures/sans-traduction      'traduction manquante'
+  build_fails section-inconnue     tests/fixtures/section-inconnue     'section inconnue: Probleme'
+  build_fails realise-sans-risques tests/fixtures/realise-sans-risques 'section obligatoire manquante: Risques & garde-fous'
+  build_ok html-brut tests/fixtures/html-brut OUT2
+  assert_not_contains "$OUT2/fr/index.html" '<script'
 }
 
 # ---------------------------------------------------------------- exécution

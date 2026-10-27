@@ -5,6 +5,8 @@ defaultContentLanguage = "fr"
 defaultContentLanguageInSubdir = true
 disableKinds = ["taxonomy", "term", "rss", "sitemap", "404"]
 enableRobotsTXT = false
+# Le HTML brut dans les fichiers projets est ignoré (unsafe = false) : inutile d'en avertir.
+ignoreLogs = ["warning-goldmark-raw-html"]
 
 [languages.fr]
   contentDir = "content/fr"
@@ -23,3 +25,11 @@ enableRobotsTXT = false
   nom = "Geoffrey"
   linkedin = "https://www.linkedin.com/"
   github = "https://github.com/Djoff/portfolio-ia"
+
+# Les projets n'ont pas de page propre : ils ne s'affichent que sous forme de tuiles.
+[[cascade]]
+  [cascade.build]
+    render = "never"
+    list = "local"
+  [cascade.target]
+    path = "{/projets,/projets/**}"

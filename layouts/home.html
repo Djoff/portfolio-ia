@@ -1,4 +1,6 @@
 {{ define "main" }}
+{{- $projets := slice -}}{{- with site.GetPage "/projets" }}{{ $projets = .RegularPages }}{{ end -}}
+{{- range $projets }}{{ partial "projet/valider.html" . }}{{ end -}}
 <main>
   <h1>{{ site.Params.nom }}</h1>
 </main>
