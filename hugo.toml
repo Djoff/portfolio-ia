@@ -1,0 +1,25 @@
+# Configuration du site — voir LISEZMOI.md
+baseURL = "/"
+title = "Portfolio IA"
+defaultContentLanguage = "fr"
+defaultContentLanguageInSubdir = true
+disableKinds = ["taxonomy", "term", "rss", "sitemap", "404"]
+enableRobotsTXT = false
+
+[languages.fr]
+  contentDir = "content/fr"
+  label = "Français"
+  weight = 1
+
+[languages.en]
+  contentDir = "content/en"
+  label = "English"
+  weight = 2
+
+[markup.goldmark.renderer]
+  unsafe = false
+
+[params]
+  nom = "Geoffrey"
+  linkedin = "https://www.linkedin.com/"
+  github = "https://github.com/Djoff/portfolio-ia"
