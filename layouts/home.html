@@ -1,7 +1,23 @@
 {{ define "main" }}
-{{- $projets := slice -}}{{- with site.GetPage "/projets" }}{{ $projets = .RegularPages }}{{ end -}}
+{{- $projets := slice -}}
+{{- with site.GetPage "/projets" }}{{ $projets = .RegularPages }}{{ end -}}
 {{- range $projets }}{{ partial "projet/valider.html" . }}{{ end -}}
-<main>
+<header class="entete">
   <h1>{{ site.Params.nom }}</h1>
+  <p class="entete__titre">{{ T "titre_pro" }}</p>
+  <p class="entete__texte">{{ T "positionnement" }}</p>
+  <a class="entete__lien" href="{{ site.Params.linkedin }}" rel="noopener noreferrer me">{{ T "linkedin" }}</a>
+</header>
+<main>
+  <section class="grille">
+    {{- range $statut := slice "realise" "en-cours" "a-venir" }}
+    {{- range sort (where $projets "Params.statut" $statut) "Date" "desc" }}
+    {{ partial "projet/tuile.html" . }}
+    {{- end }}
+    {{- end }}
+  </section>
 </main>
+<footer class="pied">
+  <p>{{ T "pied_hebergement" }} · <a href="{{ site.Params.github }}" rel="noopener noreferrer">{{ T "voir_code" }}</a></p>
+</footer>
 {{ end }}

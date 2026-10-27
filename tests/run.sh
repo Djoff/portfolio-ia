@@ -73,7 +73,7 @@ assert_not_contains() {
 
 assert_count() {
   local n
-  n="$(grep -oF -- "$2" "$1" 2>/dev/null | wc -l | tr -d ' ')"
+  n="$( (grep -oF -- "$2" "$1" 2>/dev/null || true) | wc -l | tr -d ' ')"
   [ "$n" = "$3" ] || fail "assert_count $1: « $2 » trouvé $n fois, attendu $3"
 }
 
@@ -107,6 +107,27 @@ test_validation() {
   build_fails realise-sans-risques tests/fixtures/realise-sans-risques 'section obligatoire manquante: Risques & garde-fous'
   build_ok html-brut tests/fixtures/html-brut OUT2
   assert_not_contains "$OUT2/fr/index.html" '<script'
+}
+
+test_tuiles() {
+  build_ok tuiles tests/fixtures/valide OUT
+  local fr="$OUT/fr/index.html" en="$OUT/en/index.html"
+  assert_count "$fr" 'class="tuile"' 2
+  local premier
+  premier="$( (grep -o 'data-statut="[^"]*"' "$fr" || true) | head -1)"
+  [ "$premier" = 'data-statut="realise"' ] || fail "première tuile : $premier, attendu realise"
+  assert_contains "$fr" 'class="etape etape--controle"'
+  assert_contains "$fr" '✓ Contrôle'
+  assert_contains "$fr" 'class="etape etape--ia"'
+  assert_contains "$fr" 'class="bloc bloc--risques"'
+  assert_count "$fr" 'class="bloc bloc--lecons"' 1
+  assert_contains "$fr" '<h3>Risques &amp; garde-fous</h3>'
+  assert_contains "$en" '<h3>Problem</h3>'
+  assert_not_contains "$en" 'Problème'
+  assert_contains "$fr" '<h1>Geoffrey</h1>'
+  assert_contains "$fr" 'href="https://www.linkedin.com/"'
+  assert_contains "$fr" 'href="https://github.com/Djoff/portfolio-ia"'
+  assert_contains "$fr" 'Hébergé en Suisse'
 }
 
 # ---------------------------------------------------------------- exécution

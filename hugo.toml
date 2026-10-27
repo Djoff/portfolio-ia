@@ -5,6 +5,8 @@ defaultContentLanguage = "fr"
 defaultContentLanguageInSubdir = true
 disableKinds = ["taxonomy", "term", "rss", "sitemap", "404"]
 enableRobotsTXT = false
+# Les projets « à venir » peuvent avoir une date future : on les affiche quand même.
+buildFuture = true
 # Le HTML brut dans les fichiers projets est ignoré (unsafe = false) : inutile d'en avertir.
 ignoreLogs = ["warning-goldmark-raw-html"]
 
