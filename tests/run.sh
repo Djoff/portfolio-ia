@@ -158,6 +158,20 @@ test_design() {
   assert_not_contains "$css" '@import'
 }
 
+test_securite() {
+  build_ok securite tests/fixtures/valide OUT
+  local h="$OUT/.htaccess"
+  assert_contains "$h" "Header always set Content-Security-Policy \"default-src 'none'; style-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'\""
+  assert_contains "$h" 'Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"'
+  assert_contains "$h" 'Header always set X-Content-Type-Options "nosniff"'
+  assert_contains "$h" 'Header always set Referrer-Policy "strict-origin-when-cross-origin"'
+  assert_contains "$h" 'camera=()'
+  assert_contains "$h" 'microphone=()'
+  assert_contains "$h" 'geolocation=()'
+  assert_contains "$h" 'Options -Indexes'
+  assert_contains "$h" 'RewriteCond %{HTTP:Accept-Language} ^en'
+}
+
 # ---------------------------------------------------------------- exécution
 
 for t in $(declare -F | awk '{print $3}' | grep '^test_'); do
