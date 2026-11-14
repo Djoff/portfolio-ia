@@ -32,6 +32,10 @@ Ouvrez l'exécution en échec dans l'onglet **Actions** : le message indique le 
 
 Corrigez le fichier, validez à nouveau : rien n'est publié tant que la vérification n'est pas verte.
 
+## Publication
+
+Chaque modification de la branche `main` dont la vérification est verte est publiée automatiquement : GitHub Actions génère le site sur la branche `site`, que Hostinger récupère en quelques minutes. Ne modifiez jamais la branche `site` à la main.
+
 ## Ce qu'il ne faut jamais publier
 
 URL de webhooks, clés d'API, identifiants, noms de clients, exports JSON de workflows. Une vérification automatique bloque les cas les plus courants, mais relisez toujours avant de valider.

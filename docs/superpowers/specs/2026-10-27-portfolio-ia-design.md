@@ -23,7 +23,7 @@ Il veut une page web, partageable avec des recruteurs, qui présente sous forme 
 |---|---|
 | Technologie | Site statique généré par **Hugo** (exécutable unique, aucune dépendance npm) |
 | Dépôt | GitHub, compte `Djoff`, dépôt public `portfolio-ia` |
-| Hébergement | **Hostinger, hébergement web** (pas de VPS), centre de données européen — phase 2. Choix du 2026-11-14 : environ 3 CHF/mois sur 48 mois puis 9 €/mois, contre environ 10,5 CHF/mois chez Infomaniak |
+| Hébergement | **Hostinger, hébergement web** (pas de VPS), centre de données en France — phase 2. Choix du 2026-11-14 : environ 3 CHF/mois sur 48 mois puis 9 €/mois, contre environ 10,5 CHF/mois chez Infomaniak |
 | Publication | GitHub Actions : vérification → build Hugo → dépôt du site généré sur la branche `site` ; Hostinger tire cette branche (fonction Git de hPanel) |
 | Langues | Français et anglais |
 | Contenu | Un fichier Markdown par projet et par langue |
@@ -157,6 +157,7 @@ hugo.toml                configuration
   - `Referrer-Policy: strict-origin-when-cross-origin`
   - `Permissions-Policy` désactivant caméra, micro, géolocalisation, etc.
   - Redirection HTTP → HTTPS.
+- Le dossier `.git` créé dans `public_html` par la liaison Git n'est jamais servi (`RedirectMatch 404` dans `.htaccess`).
 - Accès Hostinger : clé de déploiement en **lecture seule** sur le dépôt GitHub ; aucun accès en écriture à l'hébergement n'est stocké chez GitHub. Seul le webhook de déploiement est conservé dans les réglages du dépôt.
 - Compte GitHub : commits signés avec `4498119+Djoff@users.noreply.github.com` ; double authentification à vérifier par Geoffrey.
 - Contenu : relecture avant publication pour retirer URL de webhooks, noms de clients, identifiants internes. Les exports JSON de workflows ne sont jamais publiés.

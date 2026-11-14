@@ -181,9 +181,32 @@ test_securite() {
   assert_contains "$h" 'microphone=()'
   assert_contains "$h" 'geolocation=()'
   assert_contains "$h" 'Options -Indexes'
+  assert_contains "$h" 'RedirectMatch 404 /\.git(/|$)'
   assert_contains "$h" 'RewriteCond %{HTTP:Accept-Language} ^en'
   # Derrière un proxy TLS (fréquent en hébergement mutualisé), %{HTTPS} seul provoquerait une boucle de redirection.
   assert_contains "$h" 'RewriteCond %{HTTP:X-Forwarded-Proto} !https'
+}
+
+test_publication() {
+  local w="$ROOT/.github/workflows/verifier.yml"
+  # Publication : uniquement après des tests verts, sur main, sans écrasement de l'historique.
+  assert_contains "$w" 'publier:'
+  assert_contains "$w" 'needs: verifier'
+  assert_contains "$w" "if: github.event_name == 'push' && github.ref == 'refs/heads/main'"
+  assert_contains "$w" 'BRANCHE_SITE: site'
+  assert_contains "$w" 'cancel-in-progress: false'
+  assert_not_contains "$w" '--force'
+  assert_not_contains "$w" 'push -f'
+  # Le droit d'écriture est accordé à la seule tâche de publication.
+  assert_count "$w" 'contents: write' 1
+  local ecriture publier
+  ecriture="$(grep -n 'contents: write' "$w" | cut -d: -f1)"
+  publier="$(grep -n '^  publier:' "$w" | cut -d: -f1)"
+  [ -n "$publier" ] && [ "$ecriture" -gt "$publier" ] || fail "contents: write hors de la tâche publier"
+  # Toutes les actions tierces sont figées par empreinte de commit.
+  local non_figees
+  non_figees="$( (grep -E 'uses: ' "$w" | grep -vE '@[0-9a-f]{40}' ) || true)"
+  [ -z "$non_figees" ] || fail "action non figée : $non_figees"
 }
 
 test_contenu() {

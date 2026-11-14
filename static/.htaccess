@@ -3,6 +3,9 @@
 
 Options -Indexes
 
+# Le dossier .git créé par la liaison Git de l'hébergeur n'est jamais servi.
+RedirectMatch 404 /\.git(/|$)
+
 <IfModule mod_headers.c>
   # Aucun script, aucune ressource externe : uniquement la feuille de style et les images du site.
   Header always set Content-Security-Policy "default-src 'none'; style-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'"
