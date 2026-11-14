@@ -265,6 +265,6 @@ and a `Permissions-Policy` line containing `camera=()`, `microphone=()`, `geoloc
 
 ---
 
-## Phase 2 (separate plan, once Infomaniak is ready)
+## Phase 2 (separate plan, once Hostinger hosting is ready)
 
-Domain + HTTPS, dedicated SFTP account, deploy job in CI, live header check (securityheaders.com, Mozilla Observatory: A+), HSTS preload decision.
+Domain + HTTPS (EU data centre), CI job that pushes the built site to a `site` branch, Hostinger Git pull with a read-only deploy key + webhook, LiteSpeed `.htaccess` check, live header check (securityheaders.com, Mozilla Observatory: A+), HSTS preload decision.

@@ -1,0 +1,28 @@
+{{- /* Arrête la construction si un fichier projet est incomplet ou mal formé. */ -}}
+{{- $p := .Params -}}
+{{- $f := .File.Path -}}
+{{- $lang := .Language.Lang -}}
+{{- range slice "titre" "statut" "date" "outils" "resume" -}}
+  {{- if not (index $p .) }}{{ errorf "%s: champ manquant: %s" $f . }}{{ end -}}
+{{- end -}}
+{{- with $p.statut -}}
+  {{- if not (in (slice "realise" "en-cours" "a-venir") .) }}{{ errorf "%s: statut invalide: %s" $f . }}{{ end -}}
+{{- end -}}
+{{- $etapes := $p.etapes | default slice -}}
+{{- if lt (len $etapes) 2 }}{{ errorf "%s: au moins 2 etapes" $f }}{{ end -}}
+{{- range $etapes -}}
+  {{- $type := index . "type" -}}
+  {{- if not (in (slice "normal" "ia" "controle") $type) }}{{ errorf "%s: type d'etape invalide: %v" $f $type }}{{ end -}}
+{{- end -}}
+{{- /* Les projets ne sont pas rendus, donc .IsTranslated ne fonctionne pas : on cherche le même fichier dans chaque langue. */ -}}
+{{- $chemin := printf "/projets/%s" .File.ContentBaseName -}}
+{{- range hugo.Sites -}}
+  {{- if not (.GetPage $chemin) }}{{ errorf "%s: traduction manquante (%s)" $f .Language.Lang }}{{ end -}}
+{{- end -}}
+{{- $s := partial "projet/sections.html" . -}}
+{{- range $s.inconnues }}{{ errorf "%s: section inconnue: %s" $f . }}{{ end -}}
+{{- $requises := slice "probleme" "solution" -}}
+{{- if eq $p.statut "realise" }}{{ $requises = $requises | append "risques" "resultat" }}{{ end -}}
+{{- range $requises -}}
+  {{- if not (index $s .) }}{{ errorf "%s: section obligatoire manquante: %s" $f (index hugo.Data.sections . $lang) }}{{ end -}}
+{{- end -}}

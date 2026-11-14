@@ -1,0 +1,6 @@
+{{- /* Schéma des étapes. Contexte : dict "etapes" (liste {nom, type}) et "compact" (miniature de tuile fermée). */ -}}
+<ol class="schema{{ if .compact }} schema--compact{{ end }}"{{ if .compact }} aria-hidden="true"{{ else }} aria-label="{{ T "schema_titre" }}"{{ end }}>
+  {{- range .etapes }}
+  <li class="etape etape--{{ .type }}">{{ if eq .type "controle" }}✓ {{ end }}{{ .nom }}</li>
+  {{- end }}
+</ol>

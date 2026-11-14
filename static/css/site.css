@@ -1,0 +1,376 @@
+/* Portfolio IA — style « éditorial suisse ».
+   Aucune police téléchargée, aucune ressource externe (voir la CSP dans .htaccess). */
+
+:root {
+  --fond: #f7f4ee;
+  --texte: #22201c;
+  --texte-doux: #6b655c;
+  --accent: #b23a2b;
+  --sur-accent: #ffffff;
+  --tuile: #ffffff;
+  --etape: #f3eee5;
+  --controle: #22201c;
+  --sur-controle: #f7f4ee;
+  --bordure: #e3dccf;
+  --pointilles: #cfc6b6;
+  --encadre: #faf6f0;
+  --ombre: 0 1px 3px rgba(0, 0, 0, 0.08);
+
+  --serif: Georgia, "Times New Roman", serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fond: #1c1a17;
+    --texte: #ece6db;
+    --texte-doux: #b3ab9e;
+    --accent: #e07a62;
+    --sur-accent: #1c1a17;
+    --tuile: #24211d;
+    --etape: #2f2b25;
+    --controle: #ece6db;
+    --sur-controle: #1c1a17;
+    --bordure: #3a352e;
+    --pointilles: #4a443b;
+    --encadre: #2a2621;
+    --ombre: none;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--fond);
+  color: var(--texte);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  color: var(--accent);
+  text-underline-offset: 0.2em;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---------- Mise en page ---------- */
+
+.langue,
+.entete,
+main,
+.pied {
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+.langue {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.entete {
+  padding-block: 2rem 1.5rem;
+}
+
+.entete h1 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(2rem, 6vw, 2.75rem);
+  line-height: 1.15;
+  margin: 0;
+}
+
+.entete__titre {
+  margin: 0.25rem 0 0;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.entete__texte {
+  max-width: 40rem;
+  margin: 1rem 0;
+  color: var(--texte-doux);
+}
+
+.entete__lien {
+  font-weight: 600;
+}
+
+.entete__lien::after {
+  content: " →";
+}
+
+.pied {
+  padding-block: 2rem 3rem;
+  color: var(--texte-doux);
+  font-size: 0.875rem;
+}
+
+/* ---------- Filtre (CSS pur) ---------- */
+
+.filtre__choix {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.filtre {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.filtre label {
+  cursor: pointer;
+  padding: 0.35rem 0.9rem;
+  border: 1px solid var(--pointilles);
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+#f-tous:checked ~ .filtre label[for="f-tous"],
+#f-realise:checked ~ .filtre label[for="f-realise"],
+#f-en-cours:checked ~ .filtre label[for="f-en-cours"],
+#f-a-venir:checked ~ .filtre label[for="f-a-venir"] {
+  background: var(--texte);
+  border-color: var(--texte);
+  color: var(--fond);
+}
+
+#f-tous:focus-visible ~ .filtre label[for="f-tous"],
+#f-realise:focus-visible ~ .filtre label[for="f-realise"],
+#f-en-cours:focus-visible ~ .filtre label[for="f-en-cours"],
+#f-a-venir:focus-visible ~ .filtre label[for="f-a-venir"] {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+#f-realise:checked ~ .grille .tuile:not([data-statut="realise"]),
+#f-en-cours:checked ~ .grille .tuile:not([data-statut="en-cours"]),
+#f-a-venir:checked ~ .grille .tuile:not([data-statut="a-venir"]) {
+  display: none;
+}
+
+/* ---------- Grille et tuiles ---------- */
+
+.grille {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(18rem, 100%), 1fr));
+  gap: 1rem;
+  align-items: start;
+}
+
+.tuile {
+  background: var(--tuile);
+  border: 1px solid var(--bordure);
+  border-radius: 10px;
+  box-shadow: var(--ombre);
+  min-width: 0;
+}
+
+.tuile[open] {
+  grid-column: 1 / -1;
+}
+
+.tuile[data-statut="a-venir"] {
+  background: transparent;
+  border-style: dashed;
+  border-color: var(--pointilles);
+  box-shadow: none;
+}
+
+.tuile summary {
+  display: block;
+  list-style: none;
+  cursor: pointer;
+  padding: 1.1rem 1.1rem 1rem;
+  position: relative;
+}
+
+.tuile summary::-webkit-details-marker {
+  display: none;
+}
+
+.tuile summary::after {
+  content: "+";
+  position: absolute;
+  top: 0.9rem;
+  right: 1rem;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--accent);
+}
+
+.tuile[open] summary::after {
+  content: "−";
+}
+
+.tuile[open] .schema--compact {
+  display: none;
+}
+
+.tuile__titre {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.3;
+  margin: 0.5rem 2rem 0.25rem 0;
+  overflow-wrap: anywhere;
+}
+
+.tuile__resume {
+  margin: 0.5rem 0 0;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.1rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.badge--realise {
+  background: var(--texte);
+  color: var(--fond);
+}
+
+.badge--en-cours {
+  background: var(--accent);
+  color: var(--sur-accent);
+}
+
+.badge--a-venir {
+  border: 1px solid var(--pointilles);
+  color: var(--texte-doux);
+}
+
+.outils {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.8rem;
+  color: var(--texte-doux);
+}
+
+.tuile__corps {
+  padding: 0 1.1rem 1.25rem;
+  max-width: 48rem;
+}
+
+/* ---------- Schéma des étapes ---------- */
+
+.schema {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.4rem;
+  list-style: none;
+  margin: 1rem 0;
+  padding: 0;
+}
+
+.etape {
+  position: relative;
+  padding: 0.35rem 0.7rem;
+  border-radius: 6px;
+  background: var(--etape);
+  font-size: 0.85rem;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.etape + .etape::before {
+  content: "›";
+  position: absolute;
+  left: -1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.etape--ia {
+  background: var(--accent);
+  color: var(--sur-accent);
+}
+
+.etape--controle {
+  background: var(--controle);
+  color: var(--sur-controle);
+}
+
+.schema--compact {
+  gap: 0.35rem 1.1rem;
+  margin: 0.75rem 0 0;
+}
+
+.schema--compact .etape {
+  padding: 0.15rem 0.45rem;
+  font-size: 0.7rem;
+}
+
+.schema--compact .etape + .etape::before {
+  left: -0.8rem;
+}
+
+/* ---------- Sections du détail ---------- */
+
+.bloc {
+  margin-top: 1rem;
+}
+
+.bloc h3 {
+  margin: 0 0 0.25rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.bloc p {
+  margin: 0 0 0.5rem;
+}
+
+.bloc--risques {
+  border-left: 3px solid var(--accent);
+  background: var(--encadre);
+  padding: 0.6rem 0.9rem;
+  border-radius: 0 6px 6px 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}

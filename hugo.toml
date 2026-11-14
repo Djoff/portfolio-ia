@@ -1,0 +1,37 @@
+# Configuration du site — voir LISEZMOI.md
+baseURL = "/"
+title = "Portfolio IA"
+defaultContentLanguage = "fr"
+defaultContentLanguageInSubdir = true
+disableKinds = ["taxonomy", "term", "rss", "sitemap", "404"]
+enableRobotsTXT = false
+# Les projets « à venir » peuvent avoir une date future : on les affiche quand même.
+buildFuture = true
+# Le HTML brut dans les fichiers projets est ignoré (unsafe = false) : inutile d'en avertir.
+ignoreLogs = ["warning-goldmark-raw-html"]
+
+[languages.fr]
+  contentDir = "content/fr"
+  label = "Français"
+  weight = 1
+
+[languages.en]
+  contentDir = "content/en"
+  label = "English"
+  weight = 2
+
+[markup.goldmark.renderer]
+  unsafe = false
+
+[params]
+  nom = "Geoffrey Etwein"
+  linkedin = "https://www.linkedin.com/in/geoffrey-etwein/"
+  github = "https://github.com/Djoff/portfolio-ia"
+
+# Les projets n'ont pas de page propre : ils ne s'affichent que sous forme de tuiles.
+[[cascade]]
+  [cascade.build]
+    render = "never"
+    list = "local"
+  [cascade.target]
+    path = "{/projets,/projets/**}"

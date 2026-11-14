@@ -14,7 +14,7 @@ Il veut une page web, partageable avec des recruteurs, qui présente sous forme 
 - Un recruteur comprend en moins de 30 secondes le positionnement (produit + gouvernance IA) et voit les projets.
 - Chaque projet met en avant les **risques identifiés et les garde-fous**, pas seulement la technique.
 - Ajouter un projet = ajouter un fichier texte depuis l'interface web de GitHub, sans rien installer.
-- Site publié en Suisse, note **A+** sur securityheaders.com et Mozilla Observatory.
+- Site publié en Europe (centre de données UE), note **A+** sur securityheaders.com et Mozilla Observatory.
 - Affichage correct sur mobile, tablette et ordinateur, en mode clair et sombre.
 
 ## 2. Décisions prises
@@ -23,8 +23,8 @@ Il veut une page web, partageable avec des recruteurs, qui présente sous forme 
 |---|---|
 | Technologie | Site statique généré par **Hugo** (exécutable unique, aucune dépendance npm) |
 | Dépôt | GitHub, compte `Djoff`, dépôt public `portfolio-ia` |
-| Hébergement | **Infomaniak, offre « Hébergement Web »** (pas de VPS) — phase 2 |
-| Publication | GitHub Actions : vérification → build Hugo → envoi SFTP |
+| Hébergement | **Hostinger, hébergement web** (pas de VPS), centre de données en France — phase 2. Choix du 2026-11-14 : environ 3 CHF/mois sur 48 mois puis 9 €/mois, contre environ 10,5 CHF/mois chez Infomaniak |
+| Publication | GitHub Actions : vérification → build Hugo → dépôt du site généré sur la branche `site` ; Hostinger tire cette branche (fonction Git de hPanel) |
 | Langues | Français et anglais |
 | Contenu | Un fichier Markdown par projet et par langue |
 | Identité | Nom + lien LinkedIn (pas de photo, pas d'e-mail, pas de formulaire) |
@@ -43,7 +43,7 @@ De haut en bas :
 1. **En-tête** : nom, titre « AI Product & Governance », 2–3 lignes de positionnement, lien LinkedIn.
 2. **Filtre de statut** : Tous / Réalisés / En cours / À venir — réalisé en CSS pur (boutons radio + sélecteurs), sans JavaScript.
 3. **Grille de tuiles** : 3 colonnes (ordinateur), 2 (tablette), 1 (mobile). Tri : statut (réalisé, en cours, à venir), puis date décroissante.
-4. **Pied de page** : « Hébergé en Suisse · sans cookies ni traceurs », lien vers le dépôt GitHub.
+4. **Pied de page** : « Hébergé en Europe · sans cookies ni traceurs », lien vers le dépôt GitHub.
 
 ### Tuile fermée
 
@@ -144,7 +144,7 @@ hugo.toml                configuration
 ### Automatisations GitHub Actions
 
 - **À chaque modification (phase 1)** : vérification des fichiers projets (champs obligatoires, paire FR/EN présente) puis build Hugo. Un échec bloque.
-- **Publication (phase 2)** : sur la branche `main`, après vérification et build réussis, envoi SFTP vers Infomaniak. En cas d'échec, rien n'est publié et l'ancienne version reste en ligne ; GitHub envoie un e-mail.
+- **Publication (phase 2)** : sur la branche `main`, après vérification et build réussis, le site généré est déposé sur la branche `site`, puis Hostinger la tire automatiquement (webhook). En cas d'échec, rien n'est publié et l'ancienne version reste en ligne ; GitHub envoie un e-mail.
 - Version de Hugo **figée** ; actions tierces **figées par empreinte de commit** (SHA).
 
 ## 8. Sécurité
@@ -157,7 +157,8 @@ hugo.toml                configuration
   - `Referrer-Policy: strict-origin-when-cross-origin`
   - `Permissions-Policy` désactivant caméra, micro, géolocalisation, etc.
   - Redirection HTTP → HTTPS.
-- Accès Infomaniak : compte SFTP dédié limité au dossier du site, clé SSH si l'offre le permet, stockée dans les secrets GitHub.
+- Le dossier `.git` créé dans `public_html` par la liaison Git n'est jamais servi (`RedirectMatch 404` dans `.htaccess`).
+- Accès Hostinger : clé de déploiement en **lecture seule** sur le dépôt GitHub ; aucun accès en écriture à l'hébergement n'est stocké chez GitHub. Seul le webhook de déploiement est conservé dans les réglages du dépôt.
 - Compte GitHub : commits signés avec `4498119+Djoff@users.noreply.github.com` ; double authentification à vérifier par Geoffrey.
 - Contenu : relecture avant publication pour retirer URL de webhooks, noms de clients, identifiants internes. Les exports JSON de workflows ne sont jamais publiés.
 
@@ -173,9 +174,9 @@ Projets proposés, à confirmer et rédiger avec Geoffrey (première version ré
 
 ## 10. Phases
 
-**Phase 1 — construire (sans Infomaniak)** : dépôt, site complet FR/EN, contenu initial, vérification automatique, tests locaux. Fin : site terminé, testé, non public.
+**Phase 1 — construire (sans hébergement)** : dépôt, site complet FR/EN, contenu initial, vérification automatique, tests locaux. Fin : site terminé, testé, non public.
 
-**Phase 2 — mettre en ligne (quand Infomaniak est prêt)** : domaine et HTTPS, compte SFTP, publication automatique, contrôle des en-têtes (A+).
+**Phase 2 — mettre en ligne (quand l'hébergement Hostinger est prêt)** : domaine et HTTPS, branche `site` et liaison Git dans hPanel, publication automatique, contrôle des en-têtes (A+).
 
 ## 11. Tests
 
@@ -191,7 +192,7 @@ Projets proposés, à confirmer et rédiger avec Geoffrey (première version ré
 - Nom affiché et URL du profil LinkedIn.
 - Texte de positionnement (première version proposée par Claude).
 - Validation et corrections des textes de projets.
-- Phase 2 : achat du domaine et de l'hébergement Infomaniak, création de l'accès SFTP (guidée).
+- Phase 2 : achat du domaine (nom de marque, pas le nom de Geoffrey) et de l'hébergement Hostinger, liaison Git dans hPanel (guidée).
 
 ## 13. Hors périmètre (version 1)
 

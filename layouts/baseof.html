@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="{{ site.Language.Lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ site.Params.nom }} · {{ T "titre_pro" }}</title>
+  <meta name="description" content="{{ T "positionnement" }}">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="stylesheet" href="/css/site.css">
+  {{- range .AllTranslations }}
+  <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .RelPermalink }}">
+  {{- end }}
+</head>
+<body>
+  <nav class="langue">
+    {{- range .Translations }}
+    <a href="{{ .RelPermalink }}" hreflang="{{ .Language.Lang }}" lang="{{ .Language.Lang }}">{{ T "autre_langue" }}</a>
+    {{- end }}
+  </nav>
+  {{ block "main" . }}{{ end }}
+</body>
+</html>

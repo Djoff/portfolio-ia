@@ -1,0 +1,6 @@
+# Titres de section autorisés dans les fichiers projets (dans cet ordre d'affichage).
+probleme: { fr: "Problème", en: "Problem" }
+solution: { fr: "Solution", en: "Solution" }
+risques: { fr: "Risques & garde-fous", en: "Risks & safeguards" }
+resultat: { fr: "Résultat", en: "Outcome" }
+lecons: { fr: "Ce que j'en retiens", en: "Lessons learned" }

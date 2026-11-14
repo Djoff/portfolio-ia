@@ -3,3 +3,5 @@ skills-lock.json
 /public/
 /resources/_gen/
 .hugo_build.lock
+.claude/
+tests/.liste-privee

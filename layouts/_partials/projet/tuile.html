@@ -1,0 +1,26 @@
+{{- /* Une tuile de projet : résumé visible, détail dépliable (élément <details>, sans JavaScript). */ -}}
+{{- $s := partial "projet/sections.html" . -}}
+{{- $lang := .Language.Lang -}}
+{{- $statut := .Params.statut -}}
+<details class="tuile" data-statut="{{ $statut }}">
+  <summary class="tuile__resume-bloc">
+    <span class="badge badge--{{ $statut }}">{{ T (printf "statut_%s" $statut) }}</span>
+    <h2 class="tuile__titre">{{ .Params.titre }}</h2>
+    <ul class="outils">
+      {{- range .Params.outils }}<li>{{ . }}</li>{{ end -}}
+    </ul>
+    <p class="tuile__resume">{{ .Params.resume }}</p>
+    {{ partial "projet/schema.html" (dict "etapes" .Params.etapes "compact" true) }}
+  </summary>
+  <div class="tuile__corps">
+    {{ partial "projet/schema.html" (dict "etapes" .Params.etapes "compact" false) }}
+    {{- range $cle := slice "probleme" "solution" "risques" "resultat" "lecons" }}
+    {{- with index $s $cle }}
+    <section class="bloc bloc--{{ $cle }}">
+      <h3>{{ index hugo.Data.sections $cle $lang }}</h3>
+      {{ . | safeHTML }}
+    </section>
+    {{- end }}
+    {{- end }}
+  </div>
+</details>
