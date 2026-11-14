@@ -1,9 +1,9 @@
 ---
-titre: "Fiche produit et prix à partir de photos"
+titre: "Fiche produit de casquettes et prix à partir de photos"
 statut: "realise"
 date: 2026-10-08
 outils: ["n8n", "Telegram", "Claude", "Baserow"]
-resume: "Envoyer des photos d'un article d'occasion par messagerie suffit pour obtenir sa fiche produit et une estimation de prix."
+resume: "Envoyer des photos d'une casquette d'occasion par messagerie Telegram suffit pour obtenir sa fiche produit et une estimation de prix."
 etapes:
   - { nom: "Photos par Telegram", type: "normal" }
   - { nom: "Expéditeur autorisé ?", type: "controle" }

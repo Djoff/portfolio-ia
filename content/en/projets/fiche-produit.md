@@ -1,9 +1,9 @@
 ---
-titre: "Product sheet and price from photos"
+titre: "Cap product sheet and price from photos"
 statut: "realise"
 date: 2026-10-08
 outils: ["n8n", "Telegram", "Claude", "Baserow"]
-resume: "Sending photos of a second-hand item by message is enough to get its product sheet and a price estimate."
+resume: "Sending photos of a second-hand cap via Telegram is enough to get its product sheet and a price estimate."
 etapes:
   - { nom: "Photos via Telegram", type: "normal" }
   - { nom: "Authorised sender?", type: "controle" }
