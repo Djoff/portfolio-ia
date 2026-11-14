@@ -185,6 +185,9 @@ test_securite() {
   assert_contains "$h" 'RewriteCond %{HTTP:Accept-Language} ^en'
   # Derrière un proxy TLS (fréquent en hébergement mutualisé), %{HTTPS} seul provoquerait une boucle de redirection.
   assert_contains "$h" 'RewriteCond %{HTTP:X-Forwarded-Proto} !https'
+  # Une seule adresse : www redirige vers le domaine nu, directement en HTTPS.
+  assert_contains "$h" 'RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]'
+  assert_contains "$h" 'RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]'
 }
 
 test_publication() {
