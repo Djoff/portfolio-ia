@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Geoffrey Etwein · AI Product &amp; Governance</title>
+  <meta name="description" content="Chef de projet IT, je pilote l&#39;adoption de l&#39;IA en entreprise : cadrage produit, gouvernance, maîtrise des risques. Ces projets montrent comment je conçois, teste et sécurise des usages concrets de l&#39;IA.">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="alternate" hreflang="fr" href="/fr/">
+  <link rel="alternate" hreflang="en" href="/en/">
+	<meta name="generator" content="Hugo 0.168.0">
+</head>
+<body>
+  <nav class="langue">
+    <a href="/en/" hreflang="en" lang="en">English</a>
+  </nav>
+  <header class="entete">
+  <h1>Geoffrey Etwein</h1>
+  <p class="entete__titre">AI Product &amp; Governance</p>
+  <p class="entete__texte">Chef de projet IT, je pilote l&#39;adoption de l&#39;IA en entreprise : cadrage produit, gouvernance, maîtrise des risques. Ces projets montrent comment je conçois, teste et sécurise des usages concrets de l&#39;IA.</p>
+  <a class="entete__lien" href="https://www.linkedin.com/in/geoffrey-etwein/" rel="noopener noreferrer me">Profil LinkedIn</a>
+</header>
+<main>
+  <input type="radio" name="filtre" id="f-tous" class="filtre__choix" checked>
+<input type="radio" name="filtre" id="f-realise" class="filtre__choix">
+<input type="radio" name="filtre" id="f-en-cours" class="filtre__choix">
+<div class="filtre" role="group" aria-label="Filtrer par statut">
+  <label for="f-tous">Tous</label>
+  <label for="f-realise">Réalisé</label>
+  <label for="f-en-cours">En cours</label>
+</div>
+
+  <section class="grille">
+    <details class="tuile" data-statut="realise">
+  <summary class="tuile__resume-bloc">
+    <span class="badge badge--realise">Réalisé</span>
+    <h2 class="tuile__titre">Fiche produit de casquettes et prix à partir de photos</h2>
+    <ul class="outils"><li>n8n</li><li>Telegram</li><li>Claude</li><li>Baserow</li></ul>
+    <p class="tuile__resume">Envoyer des photos d&#39;une casquette d&#39;occasion par messagerie Telegram suffit pour obtenir sa fiche produit et une estimation de prix.</p>
+    <ol class="schema schema--compact" aria-hidden="true">
+  <li class="etape etape--normal">Photos par Telegram</li>
+  <li class="etape etape--controle">✓ Expéditeur autorisé ?</li>
+  <li class="etape etape--normal">Regroupement de l&#39;album</li>
+  <li class="etape etape--ia">Fiche produit</li>
+  <li class="etape etape--ia">Estimation de prix</li>
+  <li class="etape etape--controle">✓ Calcul des prix</li>
+  <li class="etape etape--normal">Enregistrement &#43; confirmation</li>
+</ol>
+
+  </summary>
+  <div class="tuile__corps">
+    <ol class="schema" aria-label="Étapes du projet">
+  <li class="etape etape--normal">Photos par Telegram</li>
+  <li class="etape etape--controle">✓ Expéditeur autorisé ?</li>
+  <li class="etape etape--normal">Regroupement de l&#39;album</li>
+  <li class="etape etape--ia">Fiche produit</li>
+  <li class="etape etape--ia">Estimation de prix</li>
+  <li class="etape etape--controle">✓ Calcul des prix</li>
+  <li class="etape etape--normal">Enregistrement &#43; confirmation</li>
+</ol>
+
+    <section class="bloc bloc--probleme">
+      <h3>Problème</h3>
+      <p>Pour un vendeur d&rsquo;articles d&rsquo;occasion, rédiger chaque fiche produit et fixer un prix est long et répétitif.</p>
+    </section>
+    <section class="bloc bloc--solution">
+      <h3>Solution</h3>
+      <p>Le vendeur envoie les photos d&rsquo;un article par Telegram. Le workflow attend que tout l&rsquo;album soit reçu, puis un modèle d&rsquo;IA rédige la fiche produit et propose une estimation. Les prix finaux sont calculés par des règles fixes, la fiche est enregistrée en base avec un code interne, et une confirmation est renvoyée au vendeur.</p>
+    </section>
+    <section class="bloc bloc--risques">
+      <h3>Risques &amp; garde-fous</h3>
+      <ul>
+<li><strong>Accès non autorisé</strong> → seuls les expéditeurs autorisés peuvent déclencher le workflow.</li>
+<li><strong>Prix fantaisiste de l&rsquo;IA</strong> → l&rsquo;IA estime, mais le prix final est calculé par des règles déterministes.</li>
+<li><strong>Erreur non vue</strong> → le vendeur reçoit une confirmation et garde la main sur la mise en vente.</li>
+<li><strong>Données résiduelles</strong> → les données temporaires de l&rsquo;album sont supprimées après traitement.</li>
+</ul>
+    </section>
+    <section class="bloc bloc--resultat">
+      <h3>Résultat</h3>
+      <p>La création d&rsquo;une fiche passe d&rsquo;une tâche manuelle à un simple envoi de photos, avec un humain qui valide.</p>
+    </section>
+    <section class="bloc bloc--lecons">
+      <h3>Ce que j&#39;en retiens</h3>
+      <p>L&rsquo;IA est excellente pour décrire, moins fiable pour chiffrer : la combiner avec des règles explicites donne le meilleur des deux.</p>
+    </section>
+  </div>
+</details>
+
+    <details class="tuile" data-statut="realise">
+  <summary class="tuile__resume-bloc">
+    <span class="badge badge--realise">Réalisé</span>
+    <h2 class="tuile__titre">Kogito Watch</h2>
+    <ul class="outils"><li>n8n</li><li>Baserow</li><li>OpenRouter</li><li>Gmail</li></ul>
+    <p class="tuile__resume">Une veille automatisée : un agent IA lit les flux d&#39;actualité, retient l&#39;essentiel et envoie un digest.</p>
+    <ol class="schema schema--compact" aria-hidden="true">
+  <li class="etape etape--normal">Configuration</li>
+  <li class="etape etape--normal">Flux RSS</li>
+  <li class="etape etape--controle">✓ Dédoublonnage</li>
+  <li class="etape etape--ia">Analyse par l&#39;IA</li>
+  <li class="etape etape--ia">Sélection</li>
+  <li class="etape etape--normal">Digest par e-mail</li>
+  <li class="etape etape--controle">✓ Journal envoyés / rejetés</li>
+</ol>
+
+  </summary>
+  <div class="tuile__corps">
+    <ol class="schema" aria-label="Étapes du projet">
+  <li class="etape etape--normal">Configuration</li>
+  <li class="etape etape--normal">Flux RSS</li>
+  <li class="etape etape--controle">✓ Dédoublonnage</li>
+  <li class="etape etape--ia">Analyse par l&#39;IA</li>
+  <li class="etape etape--ia">Sélection</li>
+  <li class="etape etape--normal">Digest par e-mail</li>
+  <li class="etape etape--controle">✓ Journal envoyés / rejetés</li>
+</ol>
+
+    <section class="bloc bloc--probleme">
+      <h3>Problème</h3>
+      <p>Suivre l&rsquo;actualité de plusieurs sources prend du temps, et la plupart des articles ne sont pas pertinents.</p>
+    </section>
+    <section class="bloc bloc--solution">
+      <h3>Solution</h3>
+      <p>Un workflow planifié lit les sources déclarées dans une base Baserow, écarte les articles déjà traités, puis demande à un modèle de langage d&rsquo;analyser chaque article et de décider s&rsquo;il mérite d&rsquo;être lu. Les articles retenus sont regroupés dans un digest envoyé par e-mail aux destinataires configurés.</p>
+    </section>
+    <section class="bloc bloc--risques">
+      <h3>Risques &amp; garde-fous</h3>
+      <ul>
+<li><strong>Pertinence mal jugée par l&rsquo;IA</strong> → chaque article rejeté est enregistré avec la décision, ce qui permet de contrôler les choix de l&rsquo;IA a posteriori.</li>
+<li><strong>Doublons et répétitions</strong> → les articles déjà envoyés sont mémorisés et filtrés avant l&rsquo;analyse.</li>
+<li><strong>Silence ambigu</strong> → un digest vide est envoyé quand rien n&rsquo;est retenu : on sait que la veille a tourné.</li>
+<li><strong>Modifications risquées</strong> → sources, destinataires et jour d&rsquo;envoi se règlent dans la base, sans toucher au workflow.</li>
+</ul>
+    </section>
+    <section class="bloc bloc--resultat">
+      <h3>Résultat</h3>
+      <p>Une veille quotidienne qui tourne seule, avec une trace de chaque décision de l&rsquo;IA.</p>
+    </section>
+    <section class="bloc bloc--lecons">
+      <h3>Ce que j&#39;en retiens</h3>
+      <p>Sept versions ont été nécessaires : un agent IA se règle par itérations courtes sur de vraies données. Garder une trace des rejets est ce qui rend l&rsquo;outil digne de confiance.</p>
+    </section>
+  </div>
+</details>
+
+    <details class="tuile" data-statut="realise">
+  <summary class="tuile__resume-bloc">
+    <span class="badge badge--realise">Réalisé</span>
+    <h2 class="tuile__titre">Supervision des automatisations</h2>
+    <ul class="outils"><li>n8n</li><li>Telegram</li></ul>
+    <p class="tuile__resume">Quand un workflow échoue, une alerte arrive aussitôt sur mon téléphone.</p>
+    <ol class="schema schema--compact" aria-hidden="true">
+  <li class="etape etape--normal">Erreur dans un workflow</li>
+  <li class="etape etape--controle">✓ Capture de l&#39;erreur</li>
+  <li class="etape etape--normal">Alerte Telegram</li>
+</ol>
+
+  </summary>
+  <div class="tuile__corps">
+    <ol class="schema" aria-label="Étapes du projet">
+  <li class="etape etape--normal">Erreur dans un workflow</li>
+  <li class="etape etape--controle">✓ Capture de l&#39;erreur</li>
+  <li class="etape etape--normal">Alerte Telegram</li>
+</ol>
+
+    <section class="bloc bloc--probleme">
+      <h3>Problème</h3>
+      <p>Une automatisation qui échoue en silence est pire qu&rsquo;une absence d&rsquo;automatisation : on croit que le travail est fait.</p>
+    </section>
+    <section class="bloc bloc--solution">
+      <h3>Solution</h3>
+      <p>Un workflow d&rsquo;erreur dédié est déclenché par n8n dès qu&rsquo;un workflow qui y est rattaché échoue. Il envoie aussitôt une alerte sur Telegram avec le nom du workflow et l&rsquo;erreur.</p>
+    </section>
+    <section class="bloc bloc--risques">
+      <h3>Risques &amp; garde-fous</h3>
+      <ul>
+<li><strong>Échec silencieux</strong> → chaque erreur d&rsquo;un workflow supervisé produit une alerte immédiate.</li>
+<li><strong>Angle mort</strong> → cette alerte ne couvre pas une panne de n8n lui-même : une surveillance externe reste à ajouter.</li>
+<li><strong>Diagnostic lent</strong> → l&rsquo;alerte indique quel workflow a échoué et pourquoi.</li>
+</ul>
+    </section>
+    <section class="bloc bloc--resultat">
+      <h3>Résultat</h3>
+      <p>Les incidents sont signalés dès qu&rsquo;ils surviennent, au lieu d&rsquo;être découverts par hasard.</p>
+    </section>
+    <section class="bloc bloc--lecons">
+      <h3>Ce que j&#39;en retiens</h3>
+      <p>La supervision n&rsquo;est pas un ajout de fin de projet : c&rsquo;est la première chose à mettre en place avant d&rsquo;automatiser quoi que ce soit d&rsquo;important.</p>
+    </section>
+  </div>
+</details>
+
+    <details class="tuile" data-statut="realise">
+  <summary class="tuile__resume-bloc">
+    <span class="badge badge--realise">Réalisé</span>
+    <h2 class="tuile__titre">Production de vidéos avec fact-check</h2>
+    <ul class="outils"><li>n8n</li><li>OpenRouter</li><li>Claude</li><li>Tavily</li><li>Google Workspace</li><li>Fliki</li></ul>
+    <p class="tuile__resume">Une chaîne qui rédige des scripts vidéo avec recherche web, puis vérifie les faits et les sources avant production.</p>
+    <ol class="schema schema--compact" aria-hidden="true">
+  <li class="etape etape--normal">File de sujets</li>
+  <li class="etape etape--ia">Rédaction &#43; recherche web</li>
+  <li class="etape etape--controle">✓ Format structuré</li>
+  <li class="etape etape--normal">Document du script</li>
+  <li class="etape etape--ia">Fact-check</li>
+  <li class="etape etape--controle">✓ Vérification des liens</li>
+  <li class="etape etape--normal">Vidéo</li>
+</ol>
+
+  </summary>
+  <div class="tuile__corps">
+    <ol class="schema" aria-label="Étapes du projet">
+  <li class="etape etape--normal">File de sujets</li>
+  <li class="etape etape--ia">Rédaction &#43; recherche web</li>
+  <li class="etape etape--controle">✓ Format structuré</li>
+  <li class="etape etape--normal">Document du script</li>
+  <li class="etape etape--ia">Fact-check</li>
+  <li class="etape etape--controle">✓ Vérification des liens</li>
+  <li class="etape etape--normal">Vidéo</li>
+</ol>
+
+    <section class="bloc bloc--probleme">
+      <h3>Problème</h3>
+      <p>Produire régulièrement des vidéos pour plusieurs chaînes demande beaucoup de rédaction, et un texte généré par IA peut contenir des erreurs factuelles.</p>
+    </section>
+    <section class="bloc bloc--solution">
+      <h3>Solution</h3>
+      <p>Les sujets sont placés dans une file d&rsquo;attente (tableur). Un agent IA rédige le script complet en s&rsquo;appuyant sur une recherche web, au format imposé, puis le dépose dans un document. Un second workflow relit chaque script : un agent vérifie les affirmations, liste ses sources, et chaque lien est testé avant que le script ne passe au statut « vérifié ».</p>
+    </section>
+    <section class="bloc bloc--risques">
+      <h3>Risques &amp; garde-fous</h3>
+      <ul>
+<li><strong>Hallucinations</strong> → un fact-check séparé de la rédaction, avec sources citées pour chaque fait.</li>
+<li><strong>Sources inventées ou mortes</strong> → chaque lien cité est testé automatiquement et son état est consigné.</li>
+<li><strong>Sortie inexploitable</strong> → la réponse de l&rsquo;IA doit respecter un format structuré ; en cas d&rsquo;échec, une alerte est envoyée.</li>
+<li><strong>Perte de suivi</strong> → chaque sujet porte un statut (à faire, en cours, terminé, vérifié).</li>
+</ul>
+    </section>
+    <section class="bloc bloc--resultat">
+      <h3>Résultat</h3>
+      <p>Une chaîne de production où chaque script est rédigé, tracé et vérifié avant de devenir une vidéo.</p>
+    </section>
+    <section class="bloc bloc--lecons">
+      <h3>Ce que j&#39;en retiens</h3>
+      <p>La première version comptait 26 nœuds et était fragile ; la version simplifiée à 17 nœuds est plus simple à maintenir. Séparer « rédiger » et « vérifier » en deux agents distincts est un principe que je réutiliserais partout.</p>
+    </section>
+  </div>
+</details>
+
+    <details class="tuile" data-statut="en-cours">
+  <summary class="tuile__resume-bloc">
+    <span class="badge badge--en-cours">En cours</span>
+    <h2 class="tuile__titre">Ce site, sûr dès la conception</h2>
+    <ul class="outils"><li>Hugo</li><li>GitHub Actions</li><li>Claude Code</li><li>Hostinger</li></ul>
+    <p class="tuile__resume">Une vitrine de projets conçue avec un assistant IA de développement, en réduisant au minimum ce qui peut être attaqué.</p>
+    <ol class="schema schema--compact" aria-hidden="true">
+  <li class="etape etape--normal">Cadrage et cahier des charges</li>
+  <li class="etape etape--ia">Réalisation avec un assistant IA</li>
+  <li class="etape etape--controle">✓ Tests automatiques</li>
+  <li class="etape etape--controle">✓ Revue de sécurité</li>
+  <li class="etape etape--normal">Publication en Europe</li>
+</ol>
+
+  </summary>
+  <div class="tuile__corps">
+    <ol class="schema" aria-label="Étapes du projet">
+  <li class="etape etape--normal">Cadrage et cahier des charges</li>
+  <li class="etape etape--ia">Réalisation avec un assistant IA</li>
+  <li class="etape etape--controle">✓ Tests automatiques</li>
+  <li class="etape etape--controle">✓ Revue de sécurité</li>
+  <li class="etape etape--normal">Publication en Europe</li>
+</ol>
+
+    <section class="bloc bloc--probleme">
+      <h3>Problème</h3>
+      <p>Présenter mes projets à des recruteurs sans que la vitrine elle-même devienne un risque, au moment où les failles liées à l&rsquo;IA et à la chaîne logicielle se multiplient.</p>
+    </section>
+    <section class="bloc bloc--solution">
+      <h3>Solution</h3>
+      <p>Un site statique bilingue généré par Hugo : chaque projet est un simple fichier texte, vérifié automatiquement avant publication. Le site est conçu et réalisé avec un assistant IA de développement, encadré par un cahier des charges, des tests et une revue de sécurité.</p>
+    </section>
+    <section class="bloc bloc--risques">
+      <h3>Risques &amp; garde-fous</h3>
+      <ul>
+<li><strong>Chaîne d&rsquo;approvisionnement logicielle</strong> → un seul outil de génération, sans dépendances npm ; versions figées et vérifiées par empreinte.</li>
+<li><strong>Injection de code (XSS)</strong> → aucun JavaScript et une politique de sécurité (CSP) qui interdit tout script.</li>
+<li><strong>Exposition de données</strong> → aucun formulaire, cookie ni traceur ; aucune donnée interne publiée, avec un contrôle automatique.</li>
+<li><strong>Code produit par l&rsquo;IA</strong> → chaque étape est testée avant d&rsquo;être acceptée, puis l&rsquo;ensemble est relu.</li>
+</ul>
+    </section>
+    <section class="bloc bloc--resultat">
+      <h3>Résultat</h3>
+      <p>Site terminé et testé localement ; mise en ligne en Europe à venir.</p>
+    </section>
+  </div>
+</details>
+
+  </section>
+</main>
+<footer class="pied">
+  <p>Hébergé en Europe · sans cookies ni traceurs · <a href="https://github.com/Djoff/portfolio-ia" rel="noopener noreferrer">Code source du site</a></p>
+</footer>
+
+</body>
+</html>
