@@ -2,14 +2,14 @@
 titre: "Ce site, sûr dès la conception"
 statut: "en-cours"
 date: 2026-10-27
-outils: ["Hugo", "GitHub Actions", "Claude Code", "Infomaniak"]
+outils: ["Hugo", "GitHub Actions", "Claude Code", "Hostinger"]
 resume: "Une vitrine de projets conçue avec un assistant IA de développement, en réduisant au minimum ce qui peut être attaqué."
 etapes:
   - { nom: "Cadrage et cahier des charges", type: "normal" }
   - { nom: "Réalisation avec un assistant IA", type: "ia" }
   - { nom: "Tests automatiques", type: "controle" }
   - { nom: "Revue de sécurité", type: "controle" }
-  - { nom: "Publication en Suisse", type: "normal" }
+  - { nom: "Publication en Europe", type: "normal" }
 ---
 
 ## Problème
@@ -29,4 +29,4 @@ Un site statique bilingue généré par Hugo : chaque projet est un simple fichi
 
 ## Résultat
 
-Site terminé et testé localement ; mise en ligne en Suisse à venir.
+Site terminé et testé localement ; mise en ligne en Europe à venir.

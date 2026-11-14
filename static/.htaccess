@@ -1,4 +1,4 @@
-# En-têtes de sécurité et redirections (Apache, hébergement web Infomaniak).
+# En-têtes de sécurité et redirections (Apache/LiteSpeed, hébergement web Hostinger).
 # À vérifier une fois en ligne (phase 2) : securityheaders.com et Mozilla Observatory.
 
 Options -Indexes

@@ -139,7 +139,7 @@ test_tuiles() {
   assert_contains "$fr" '<h1>Geoffrey Etwein</h1>'
   assert_contains "$fr" 'href="https://www.linkedin.com/in/geoffrey-etwein/"'
   assert_contains "$fr" 'href="https://github.com/Djoff/portfolio-ia"'
-  assert_contains "$fr" 'Hébergé en Suisse'
+  assert_contains "$fr" 'Hébergé en Europe'
 }
 
 test_filtre() {
@@ -182,7 +182,7 @@ test_securite() {
   assert_contains "$h" 'geolocation=()'
   assert_contains "$h" 'Options -Indexes'
   assert_contains "$h" 'RewriteCond %{HTTP:Accept-Language} ^en'
-  # Derrière un proxy TLS (Infomaniak), %{HTTPS} seul provoquerait une boucle de redirection.
+  # Derrière un proxy TLS (fréquent en hébergement mutualisé), %{HTTPS} seul provoquerait une boucle de redirection.
   assert_contains "$h" 'RewriteCond %{HTTP:X-Forwarded-Proto} !https'
 }
 
