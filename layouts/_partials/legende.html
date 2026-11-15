@@ -6,4 +6,7 @@
     <li><span class="etape etape--controle">✓ {{ T "legende_controle" }}</span></li>
     <li><span class="etape etape--normal">{{ T "legende_normal" }}</span></li>
   </ul>
+  {{- if not site.Params.filtre }}
+  {{ partial "langue.html" . }}
+  {{- end }}
 </div>
