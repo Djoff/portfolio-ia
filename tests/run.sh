@@ -143,7 +143,15 @@ test_tuiles() {
 }
 
 test_filtre() {
+  # Désactivé par défaut (params.filtre = false) : ni boutons ni groupe.
+  build_ok sans-filtre tests/fixtures/valide OUT0
+  assert_not_contains "$OUT0/fr/index.html" 'class="filtre'
+  assert_not_contains "$OUT0/fr/index.html" 'role="group"'
+  assert_count "$OUT0/fr/index.html" 'class="tuile"' 2
+  # Activé : le filtre reprend sa forme complète.
+  export HUGO_PARAMS_FILTRE=true
   build_ok filtre tests/fixtures/valide OUT
+  unset HUGO_PARAMS_FILTRE
   local fr="$OUT/fr/index.html"
   assert_contains "$fr" 'id="f-tous" class="filtre__choix" checked'
   assert_contains "$fr" 'id="f-realise"'
@@ -214,8 +222,8 @@ test_publication() {
 
 test_contenu() {
   build_ok contenu - OUT
-  assert_count "$OUT/fr/index.html" 'class="tuile"' 5
-  assert_count "$OUT/en/index.html" 'class="tuile"' 5
+  assert_count "$OUT/fr/index.html" 'class="tuile"' 6
+  assert_count "$OUT/en/index.html" 'class="tuile"' 6
   # Les textes des projets ne contiennent ni lien ni identifiant technique.
   local motif hits
   for motif in webhook api_key apikey chat_id 'http://' 'https://'; do

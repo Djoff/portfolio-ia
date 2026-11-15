@@ -27,6 +27,8 @@ ignoreLogs = ["warning-goldmark-raw-html"]
   nom = "Geoffrey Etwein"
   linkedin = "https://www.linkedin.com/in/geoffrey-etwein/"
   github = "https://github.com/Djoff/portfolio-ia"
+  # Filtre par statut au-dessus des tuiles : à activer (true) quand il y aura plus de projets.
+  filtre = false
 
 # Les projets n'ont pas de page propre : ils ne s'affichent que sous forme de tuiles.
 [[cascade]]

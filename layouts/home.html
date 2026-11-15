@@ -9,7 +9,9 @@
   <a class="entete__lien" href="{{ site.Params.linkedin }}" rel="noopener noreferrer me">{{ T "linkedin" }}</a>
 </header>
 <main>
+  {{- if site.Params.filtre }}
   {{ partial "filtre.html" $projets }}
+  {{- end }}
   <section class="grille">
     {{- range $statut := slice "realise" "en-cours" "a-venir" }}
     {{- range sort (where $projets "Params.statut" $statut) "Date" "desc" }}

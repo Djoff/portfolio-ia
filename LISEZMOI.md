@@ -44,5 +44,6 @@ URL de webhooks, clés d'API, identifiants, noms de clients, exports JSON de wor
 
 - `bash tests/run.sh` lance tous les tests (Hugo 0.168.0 requis).
 - `hugo server` affiche le site en local sur http://localhost:1313/fr/.
+- Filtre par statut au-dessus des tuiles : désactivé tant qu'il y a peu de projets ; pour l'activer, passez `filtre = true` dans `hugo.toml`.
 - Sécurité : aucun JavaScript, aucune ressource externe, en-têtes de sécurité dans `static/.htaccess`.
 - Conception : [`docs/superpowers/specs/`](docs/superpowers/specs/).
