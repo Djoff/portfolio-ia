@@ -1,6 +1,6 @@
 ---
 titre: "Nom du projet"
-statut: "a-venir"            # realise | en-cours | a-venir (sans accents)
+statut: "a-venir"            # realise | en-cours | a-venir | arrete (sans accents)
 date: 2026-12-01             # AAAA-MM-JJ
 outils: ["n8n", "Baserow"]
 resume: "Une phrase qui dit ce que fait le projet."

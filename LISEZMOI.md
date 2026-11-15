@@ -14,7 +14,7 @@ Site statique bilingue (français / anglais) généré par [Hugo](https://gohugo
 
 | Champ | Valeurs |
 |---|---|
-| `statut` | `realise` (réalisé), `en-cours`, `a-venir` — sans accents |
+| `statut` | `realise` (réalisé), `en-cours`, `a-venir`, `arrete` (réalisé puis arrêté ; dites pourquoi dans « Résultat ») — sans accents |
 | `date` | `AAAA-MM-JJ` ; les tuiles sont triées par statut puis par date, la plus récente d'abord |
 | `etapes` | au moins 2 ; `type` vaut `normal`, `ia` (couleur d'accent) ou `controle` (foncé, avec ✓) |
 

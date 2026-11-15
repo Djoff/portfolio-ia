@@ -5,3 +5,5 @@ skills-lock.json
 .hugo_build.lock
 .claude/
 tests/.liste-privee
+# Notes de contexte privées déposées à la racine de content/ (Hugo ne lit que content/fr et content/en).
+/content/*.md

@@ -142,6 +142,22 @@ test_tuiles() {
   assert_contains "$fr" 'Hébergé en Europe'
 }
 
+test_statut_arrete() {
+  # Un projet arrêté a été réalisé : il s'affiche, avec son propre badge.
+  build_ok statuts tests/fixtures/statuts OUT
+  local fr="$OUT/fr/index.html" en="$OUT/en/index.html"
+  assert_count "$fr" 'class="tuile"' 3
+  assert_contains "$fr" 'class="badge badge--arrete">Arrêté</span>'
+  assert_contains "$en" 'class="badge badge--arrete">Discontinued</span>'
+  # Ordre : réalisé, en cours, arrêté, à venir.
+  local ordre
+  ordre="$(grep -o 'data-statut="[^"]*"' "$fr" | tr '\n' ' ')"
+  [ "$ordre" = 'data-statut="realise" data-statut="arrete" data-statut="a-venir" ' ] || fail "ordre des tuiles : $ordre"
+  assert_contains "$OUT/css/site.css" '.badge--arrete'
+  # Comme un projet réalisé, il doit dire ce qu'il a donné.
+  build_fails arrete-sans-resultat tests/fixtures/arrete-sans-resultat 'section obligatoire manquante: Résultat'
+}
+
 test_filtre() {
   # Désactivé par défaut (params.filtre = false) : ni boutons ni groupe.
   build_ok sans-filtre tests/fixtures/valide OUT0
@@ -222,12 +238,12 @@ test_publication() {
 
 test_contenu() {
   build_ok contenu - OUT
-  assert_count "$OUT/fr/index.html" 'class="tuile"' 6
-  assert_count "$OUT/en/index.html" 'class="tuile"' 6
+  assert_count "$OUT/fr/index.html" 'class="tuile"' 9
+  assert_count "$OUT/en/index.html" 'class="tuile"' 9
   # Les textes des projets ne contiennent ni lien ni identifiant technique.
   local motif hits
   for motif in webhook api_key apikey chat_id 'http://' 'https://'; do
-    hits="$( (grep -rli -- "$motif" "$ROOT/content" "$ROOT/i18n" "$ROOT/data" || true) )"
+    hits="$( (grep -rli -- "$motif" "$ROOT/content/fr" "$ROOT/content/en" "$ROOT/i18n" "$ROOT/data" || true) )"
     [ -z "$hits" ] || fail "contenu : « $motif » trouvé dans $hits"
   done
 }

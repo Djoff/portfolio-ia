@@ -1,7 +1,7 @@
 {{- /* Filtre par statut, en CSS pur : les boutons radio doivent rester frères de .grille.
        Contexte : la liste des projets. Un statut sans projet n'a pas de bouton. */ -}}
 {{- $statuts := slice -}}
-{{- range $s := slice "realise" "en-cours" "a-venir" }}{{ if where $ "Params.statut" $s }}{{ $statuts = $statuts | append $s }}{{ end }}{{ end -}}
+{{- range $s := slice "realise" "en-cours" "arrete" "a-venir" }}{{ if where $ "Params.statut" $s }}{{ $statuts = $statuts | append $s }}{{ end }}{{ end -}}
 <input type="radio" name="filtre" id="f-tous" class="filtre__choix" checked>
 {{- range $statuts }}
 <input type="radio" name="filtre" id="f-{{ . }}" class="filtre__choix">

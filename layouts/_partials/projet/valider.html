@@ -6,7 +6,7 @@
   {{- if not (index $p .) }}{{ errorf "%s: champ manquant: %s" $f . }}{{ end -}}
 {{- end -}}
 {{- with $p.statut -}}
-  {{- if not (in (slice "realise" "en-cours" "a-venir") .) }}{{ errorf "%s: statut invalide: %s" $f . }}{{ end -}}
+  {{- if not (in (slice "realise" "en-cours" "arrete" "a-venir") .) }}{{ errorf "%s: statut invalide: %s" $f . }}{{ end -}}
 {{- end -}}
 {{- $etapes := $p.etapes | default slice -}}
 {{- if lt (len $etapes) 2 }}{{ errorf "%s: au moins 2 etapes" $f }}{{ end -}}
@@ -22,7 +22,8 @@
 {{- $s := partial "projet/sections.html" . -}}
 {{- range $s.inconnues }}{{ errorf "%s: section inconnue: %s" $f . }}{{ end -}}
 {{- $requises := slice "probleme" "solution" -}}
-{{- if eq $p.statut "realise" }}{{ $requises = $requises | append "risques" "resultat" }}{{ end -}}
+{{- /* Un projet arrêté a été réalisé : mêmes exigences. */ -}}
+{{- if in (slice "realise" "arrete") $p.statut }}{{ $requises = $requises | append "risques" "resultat" }}{{ end -}}
 {{- range $requises -}}
   {{- if not (index $s .) }}{{ errorf "%s: section obligatoire manquante: %s" $f (index hugo.Data.sections . $lang) }}{{ end -}}
 {{- end -}}

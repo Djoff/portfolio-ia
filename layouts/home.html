@@ -13,7 +13,7 @@
   {{ partial "filtre.html" $projets }}
   {{- end }}
   <section class="grille">
-    {{- range $statut := slice "realise" "en-cours" "a-venir" }}
+    {{- range $statut := slice "realise" "en-cours" "arrete" "a-venir" }}
     {{- range sort (where $projets "Params.statut" $statut) "Date" "desc" }}
     {{ partial "projet/tuile.html" . }}
     {{- end }}
