@@ -154,7 +154,8 @@ main,
 #f-tous:checked ~ .filtre label[for="f-tous"],
 #f-realise:checked ~ .filtre label[for="f-realise"],
 #f-en-cours:checked ~ .filtre label[for="f-en-cours"],
-#f-a-venir:checked ~ .filtre label[for="f-a-venir"] {
+#f-a-venir:checked ~ .filtre label[for="f-a-venir"],
+#f-arrete:checked ~ .filtre label[for="f-arrete"] {
   background: var(--texte);
   border-color: var(--texte);
   color: var(--fond);
@@ -163,14 +164,16 @@ main,
 #f-tous:focus-visible ~ .filtre label[for="f-tous"],
 #f-realise:focus-visible ~ .filtre label[for="f-realise"],
 #f-en-cours:focus-visible ~ .filtre label[for="f-en-cours"],
-#f-a-venir:focus-visible ~ .filtre label[for="f-a-venir"] {
+#f-a-venir:focus-visible ~ .filtre label[for="f-a-venir"],
+#f-arrete:focus-visible ~ .filtre label[for="f-arrete"] {
   outline: 3px solid var(--accent);
   outline-offset: 3px;
 }
 
 #f-realise:checked ~ .grille .tuile:not([data-statut="realise"]),
 #f-en-cours:checked ~ .grille .tuile:not([data-statut="en-cours"]),
-#f-a-venir:checked ~ .grille .tuile:not([data-statut="a-venir"]) {
+#f-a-venir:checked ~ .grille .tuile:not([data-statut="a-venir"]),
+#f-arrete:checked ~ .grille .tuile:not([data-statut="arrete"]) {
   display: none;
 }
 
@@ -266,6 +269,12 @@ main,
 
 .badge--a-venir {
   border: 1px solid var(--pointilles);
+  color: var(--texte-doux);
+}
+
+/* Réalisé puis arrêté : même sobriété, trait plein. */
+.badge--arrete {
+  border: 1px solid var(--texte-doux);
   color: var(--texte-doux);
 }
 

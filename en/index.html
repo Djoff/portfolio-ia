@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Geoffrey Etwein · AI Product &amp; Governance</title>
-  <meta name="description" content="IT project manager leading AI adoption in organisations: product framing, governance and risk management. These projects show how I design, test and secure practical uses of AI.">
+  <meta name="description" content="I lead AI adoption in organisations: product framing, governance and risk management. These projects show how I design, test and secure practical uses of AI.">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <link rel="stylesheet" href="/css/site.css">
   <link rel="alternate" hreflang="fr" href="/fr/">
@@ -18,7 +18,7 @@
   <header class="entete">
   <h1>Geoffrey Etwein</h1>
   <p class="entete__titre">AI Product &amp; Governance</p>
-  <p class="entete__texte">IT project manager leading AI adoption in organisations: product framing, governance and risk management. These projects show how I design, test and secure practical uses of AI.</p>
+  <p class="entete__texte">I lead AI adoption in organisations: product framing, governance and risk management. These projects show how I design, test and secure practical uses of AI.</p>
   <a class="entete__lien" href="https://www.linkedin.com/in/geoffrey-etwein/" rel="noopener noreferrer me">LinkedIn profile</a>
 </header>
 <main>
@@ -139,6 +139,57 @@
     <details class="tuile" data-statut="realise">
   <summary class="tuile__resume-bloc">
     <span class="badge badge--realise">Done</span>
+    <h2 class="tuile__titre">Strategic AI watch: governance, value and finance</h2>
+    <ul class="outils"><li>Claude Code</li><li>Scheduled task</li><li>Web search</li><li>Artifact</li></ul>
+    <p class="tuile__resume">Every week, an AI agent picks the few developments that change a decision or a deadline: AI value, agents, regulation, banking and finance.</p>
+    <ol class="schema schema--compact" aria-hidden="true">
+  <li class="etape etape--ia">Weekly research</li>
+  <li class="etape etape--controle">✓ Sources ranked by tier</li>
+  <li class="etape etape--controle">✓ Figures checked at the source</li>
+  <li class="etape etape--ia">Selection of 4 to 6 topics</li>
+  <li class="etape etape--normal">Edition published</li>
+  <li class="etape etape--controle">✓ Quarterly source review</li>
+</ol>
+
+  </summary>
+  <div class="tuile__corps">
+    <ol class="schema" aria-label="Project steps">
+  <li class="etape etape--ia">Weekly research</li>
+  <li class="etape etape--controle">✓ Sources ranked by tier</li>
+  <li class="etape etape--controle">✓ Figures checked at the source</li>
+  <li class="etape etape--ia">Selection of 4 to 6 topics</li>
+  <li class="etape etape--normal">Edition published</li>
+  <li class="etape etape--controle">✓ Quarterly source review</li>
+</ol>
+
+    <section class="bloc bloc--probleme">
+      <h3>Problem</h3>
+      <p>Specialised newsletters cover product launches and technology, not what matters for steering AI in an organisation: real value, agents, regulation (AI Act, Switzerland, financial regulators). Reliable sources are scattered, and figures often circulate with no verifiable origin.</p>
+    </section>
+    <section class="bloc bloc--solution">
+      <h3>Solution</h3>
+      <p>Every Sunday, a scheduled task starts an AI agent that searches the week&rsquo;s news on four themes, including Swiss and French-language sources. It keeps 4 to 6 topics and writes, for each one, the fact and then &ldquo;what it changes&rdquo;. It then publishes a new edition on a web page, with a calendar of regulatory deadlines and a method page that documents every source.</p>
+    </section>
+    <section class="bloc bloc--risques">
+      <h3>Risks &amp; safeguards</h3>
+      <ul>
+<li><strong>Unreliable sources</strong> → four source tiers: reference, relay, watch list and candidate. Vendor surveys about their own product, commercial reports and copied articles are excluded.</li>
+<li><strong>Wrong or distorted figures</strong> → a key figure is only quoted after reading the original document, and it is used as is, never recalculated. Otherwise it is marked &ldquo;to be checked&rdquo;.</li>
+<li><strong>Agent drift</strong> → the agent never promotes or excludes a source on its own: it proposes, and I approve every quarter.</li>
+<li><strong>Ambiguous silence</strong> → a &ldquo;Nothing to report&rdquo; edition is published when no topic meets the bar: a missing edition always signals a problem.</li>
+<li><strong>Copyright</strong> → articles are paraphrased, with no long quotes.</li>
+</ul>
+    </section>
+    <section class="bloc bloc--resultat">
+      <h3>Outcome</h3>
+      <p>A new edition every week since October 2026, with an up-to-date calendar of deadlines. The method page makes every source choice traceable, and its limits are documented: some Swiss sources and some regulators&rsquo; sites remain hard to read automatically.</p>
+    </section>
+  </div>
+</details>
+
+    <details class="tuile" data-statut="realise">
+  <summary class="tuile__resume-bloc">
+    <span class="badge badge--realise">Done</span>
     <h2 class="tuile__titre">Cap product sheet and price from photos</h2>
     <ul class="outils"><li>n8n</li><li>Telegram</li><li>Claude</li><li>Baserow</li></ul>
     <p class="tuile__resume">Sending photos of a second-hand cap via Telegram is enough to get its product sheet and a price estimate.</p>
@@ -188,62 +239,6 @@
     <section class="bloc bloc--lecons">
       <h3>Lessons learned</h3>
       <p>AI is excellent at describing, less reliable at pricing: combining it with explicit rules gets the best of both.</p>
-    </section>
-  </div>
-</details>
-
-    <details class="tuile" data-statut="realise">
-  <summary class="tuile__resume-bloc">
-    <span class="badge badge--realise">Done</span>
-    <h2 class="tuile__titre">Kogito Watch</h2>
-    <ul class="outils"><li>n8n</li><li>Baserow</li><li>OpenRouter</li><li>Gmail</li></ul>
-    <p class="tuile__resume">Automated news monitoring: an AI agent reads news feeds, keeps what matters and sends a digest.</p>
-    <ol class="schema schema--compact" aria-hidden="true">
-  <li class="etape etape--normal">Configuration</li>
-  <li class="etape etape--normal">RSS feeds</li>
-  <li class="etape etape--controle">✓ De-duplication</li>
-  <li class="etape etape--ia">AI analysis</li>
-  <li class="etape etape--ia">Selection</li>
-  <li class="etape etape--normal">Email digest</li>
-  <li class="etape etape--controle">✓ Sent / rejected log</li>
-</ol>
-
-  </summary>
-  <div class="tuile__corps">
-    <ol class="schema" aria-label="Project steps">
-  <li class="etape etape--normal">Configuration</li>
-  <li class="etape etape--normal">RSS feeds</li>
-  <li class="etape etape--controle">✓ De-duplication</li>
-  <li class="etape etape--ia">AI analysis</li>
-  <li class="etape etape--ia">Selection</li>
-  <li class="etape etape--normal">Email digest</li>
-  <li class="etape etape--controle">✓ Sent / rejected log</li>
-</ol>
-
-    <section class="bloc bloc--probleme">
-      <h3>Problem</h3>
-      <p>Following news from many sources takes time, and most articles are not relevant.</p>
-    </section>
-    <section class="bloc bloc--solution">
-      <h3>Solution</h3>
-      <p>A scheduled workflow reads the sources listed in a Baserow database, drops articles already processed, then asks a language model to analyse each article and decide whether it is worth reading. Selected articles are grouped into a digest emailed to the configured recipients.</p>
-    </section>
-    <section class="bloc bloc--risques">
-      <h3>Risks &amp; safeguards</h3>
-      <ul>
-<li><strong>AI misjudging relevance</strong> → every rejected article is logged with the decision, so the AI&rsquo;s choices can be reviewed afterwards.</li>
-<li><strong>Duplicates</strong> → articles already sent are stored and filtered out before analysis.</li>
-<li><strong>Ambiguous silence</strong> → an empty digest is sent when nothing is selected, so you know the run happened.</li>
-<li><strong>Risky changes</strong> → sources, recipients and sending day are set in the database, without editing the workflow.</li>
-</ul>
-    </section>
-    <section class="bloc bloc--resultat">
-      <h3>Outcome</h3>
-      <p>Daily monitoring that runs on its own, with a record of every AI decision.</p>
-    </section>
-    <section class="bloc bloc--lecons">
-      <h3>Lessons learned</h3>
-      <p>It took seven versions: an AI agent is tuned through short iterations on real data. Logging rejections is what makes the tool trustworthy.</p>
     </section>
   </div>
 </details>
@@ -347,6 +342,138 @@
     <section class="bloc bloc--lecons">
       <h3>Lessons learned</h3>
       <p>The first version had 26 nodes and was fragile; the simplified 17-node version is easier to maintain. Splitting &ldquo;write&rdquo; and &ldquo;verify&rdquo; into two separate agents is a principle I would reuse everywhere.</p>
+    </section>
+  </div>
+</details>
+
+    <details class="tuile" data-statut="arrete">
+  <summary class="tuile__resume-bloc">
+    <span class="badge badge--arrete">Discontinued</span>
+    <h2 class="tuile__titre">Kogito Watch</h2>
+    <ul class="outils"><li>n8n</li><li>Baserow</li><li>OpenRouter</li><li>Gmail</li></ul>
+    <p class="tuile__resume">Automated news monitoring: an AI agent reads news feeds, keeps what matters and sends a digest.</p>
+    <ol class="schema schema--compact" aria-hidden="true">
+  <li class="etape etape--normal">Configuration</li>
+  <li class="etape etape--normal">RSS feeds</li>
+  <li class="etape etape--controle">✓ De-duplication</li>
+  <li class="etape etape--ia">AI analysis</li>
+  <li class="etape etape--ia">Selection</li>
+  <li class="etape etape--normal">Email digest</li>
+  <li class="etape etape--controle">✓ Sent / rejected log</li>
+</ol>
+
+  </summary>
+  <div class="tuile__corps">
+    <ol class="schema" aria-label="Project steps">
+  <li class="etape etape--normal">Configuration</li>
+  <li class="etape etape--normal">RSS feeds</li>
+  <li class="etape etape--controle">✓ De-duplication</li>
+  <li class="etape etape--ia">AI analysis</li>
+  <li class="etape etape--ia">Selection</li>
+  <li class="etape etape--normal">Email digest</li>
+  <li class="etape etape--controle">✓ Sent / rejected log</li>
+</ol>
+
+    <section class="bloc bloc--probleme">
+      <h3>Problem</h3>
+      <p>Following news from many sources takes time, and most articles are not relevant.</p>
+    </section>
+    <section class="bloc bloc--solution">
+      <h3>Solution</h3>
+      <p>A scheduled workflow reads the sources listed in a Baserow database, drops articles already processed, then asks a language model to analyse each article and decide whether it is worth reading. Selected articles are grouped into a digest emailed to the configured recipients.</p>
+    </section>
+    <section class="bloc bloc--risques">
+      <h3>Risks &amp; safeguards</h3>
+      <ul>
+<li><strong>AI misjudging relevance</strong> → every rejected article is logged with the decision, so the AI&rsquo;s choices can be reviewed afterwards.</li>
+<li><strong>Duplicates</strong> → articles already sent are stored and filtered out before analysis.</li>
+<li><strong>Ambiguous silence</strong> → an empty digest is sent when nothing is selected, so you know the run happened.</li>
+<li><strong>Risky changes</strong> → sources, recipients and sending day are set in the database, without editing the workflow.</li>
+</ul>
+    </section>
+    <section class="bloc bloc--resultat">
+      <h3>Outcome</h3>
+      <p>Daily monitoring that runs on its own, with a record of every AI decision. The workflow was later shut down because I stopped this monitoring: it remains a complete, documented example of a monitoring agent.</p>
+    </section>
+    <section class="bloc bloc--lecons">
+      <h3>Lessons learned</h3>
+      <p>It took seven versions: an AI agent is tuned through short iterations on real data. Logging rejections is what makes the tool trustworthy.</p>
+    </section>
+  </div>
+</details>
+
+    <details class="tuile" data-statut="a-venir">
+  <summary class="tuile__resume-bloc">
+    <span class="badge badge--a-venir">Upcoming</span>
+    <h2 class="tuile__titre">Digital Création, a playground for experiments</h2>
+    <ul class="outils"><li>Claude Code</li></ul>
+    <p class="tuile__resume">A site for ephemeral, purposeless art pieces, made alone or together, to experiment with building a full application with AI.</p>
+    <ol class="schema schema--compact" aria-hidden="true">
+  <li class="etape etape--normal">Framing</li>
+  <li class="etape etape--ia">Interface built with AI</li>
+  <li class="etape etape--ia">Server built with AI</li>
+  <li class="etape etape--controle">✓ Security review</li>
+  <li class="etape etape--controle">✓ Optimisation</li>
+  <li class="etape etape--normal">Going live</li>
+</ol>
+
+  </summary>
+  <div class="tuile__corps">
+    <ol class="schema" aria-label="Project steps">
+  <li class="etape etape--normal">Framing</li>
+  <li class="etape etape--ia">Interface built with AI</li>
+  <li class="etape etape--ia">Server built with AI</li>
+  <li class="etape etape--controle">✓ Security review</li>
+  <li class="etape etape--controle">✓ Optimisation</li>
+  <li class="etape etape--normal">Going live</li>
+</ol>
+
+    <section class="bloc bloc--probleme">
+      <h3>Problem</h3>
+      <p>Having an AI build a full application, with an interface and a server, while keeping it secure and fast. This is far more demanding than a static site like this one: accounts, data, interactions between users.</p>
+    </section>
+    <section class="bloc bloc--solution">
+      <h3>Solution</h3>
+      <p>A site where anyone can make ephemeral art pieces, with no purpose other than the joy of creating, alone or together. The project is a playground for experiments: the application is built with Claude Code, and the other tools are still to be chosen.</p>
+    </section>
+  </div>
+</details>
+
+    <details class="tuile" data-statut="a-venir">
+  <summary class="tuile__resume-bloc">
+    <span class="badge badge--a-venir">Upcoming</span>
+    <h2 class="tuile__titre">A 3D printing farm driven with AI</h2>
+    <ul class="outils"><li>Claude Code</li><li>Klipper</li><li>Moonraker</li><li>OrcaSlicer</li></ul>
+    <p class="tuile__resume">Supervising a farm of 3D printers, from the online order to the finished part, with automated workflows.</p>
+    <ol class="schema schema--compact" aria-hidden="true">
+  <li class="etape etape--normal">Online order</li>
+  <li class="etape etape--ia">File preparation</li>
+  <li class="etape etape--normal">Production planning</li>
+  <li class="etape etape--normal">Printing</li>
+  <li class="etape etape--controle">✓ Camera and sensor monitoring</li>
+</ol>
+
+  </summary>
+  <div class="tuile__corps">
+    <ol class="schema" aria-label="Project steps">
+  <li class="etape etape--normal">Online order</li>
+  <li class="etape etape--ia">File preparation</li>
+  <li class="etape etape--normal">Production planning</li>
+  <li class="etape etape--normal">Printing</li>
+  <li class="etape etape--controle">✓ Camera and sensor monitoring</li>
+</ol>
+
+    <section class="bloc bloc--probleme">
+      <h3>Problem</h3>
+      <p>Running several 3D printers takes constant monitoring and a lot of manual work: picking up each request, preparing the files, starting the prints and checking that they go well.</p>
+    </section>
+    <section class="bloc bloc--solution">
+      <h3>Solution</h3>
+      <p>Connect online requests to production: files are prepared automatically, production is scheduled across the printers, then monitored by camera and other sensors. The system relies on open-source tools (Klipper, Moonraker, OrcaSlicer) and is built with Claude Code.</p>
+    </section>
+    <section class="bloc bloc--risques">
+      <h3>Risks &amp; safeguards</h3>
+      <p>To be defined.</p>
     </section>
   </div>
 </details>
