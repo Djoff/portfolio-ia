@@ -3,7 +3,14 @@
 {{- with site.GetPage "/projets" }}{{ $projets = .RegularPages }}{{ end -}}
 {{- range $projets }}{{ partial "projet/valider.html" . }}{{ end -}}
 <header class="entete">
-  <h1>{{ site.Params.nom }}</h1>
+  <div class="entete__haut">
+    <h1>{{ site.Params.nom }}</h1>
+    <nav class="langue">
+      {{- range .Translations }}
+      <a href="{{ .RelPermalink }}" hreflang="{{ .Language.Lang }}" lang="{{ .Language.Lang }}">{{ T "autre_langue" }}</a>
+      {{- end }}
+    </nav>
+  </div>
   <p class="entete__titre">{{ T "titre_pro" }}</p>
   <p class="entete__texte">{{ T "positionnement" }}</p>
   <a class="entete__lien" href="{{ site.Params.linkedin }}" rel="noopener noreferrer me">{{ T "linkedin" }}</a>

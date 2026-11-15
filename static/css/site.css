@@ -69,7 +69,6 @@ a {
 
 /* ---------- Mise en page ---------- */
 
-.langue,
 .entete,
 main,
 .pied {
@@ -78,11 +77,19 @@ main,
   padding-inline: 1rem;
 }
 
-.langue {
+/* Première ligne de l'en-tête : le nom à gauche, le lien de langue à droite (pas de ligne à part). */
+.entete__haut {
   display: flex;
-  justify-content: flex-end;
-  padding-top: 1rem;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0 1rem;
+}
+
+.langue {
+  margin-left: auto;
   font-size: 0.9rem;
+  white-space: nowrap;
 }
 
 .entete {
