@@ -217,6 +217,42 @@ test_design() {
   assert_not_contains "$css" '@import'
 }
 
+# Texte du fichier $1 entre la première ligne contenant $2 et la première ligne contenant $3.
+entre() {
+  sed -n "/$2/,/$3/p" "$1"
+}
+
+test_langue() {
+  # Le lien de langue est le plus haut possible sans avoir sa propre ligne : à droite du nom, dans la première ligne de l'en-tête.
+  build_ok langue tests/fixtures/valide OUT
+  local fr="$OUT/fr/index.html" en="$OUT/en/index.html"
+  assert_count "$fr" 'class="langue"' 1
+  assert_count "$en" 'class="langue"' 1
+  assert_contains "$fr" 'hreflang="en" lang="en">English</a>'
+  assert_contains "$en" 'hreflang="fr" lang="fr">Français</a>'
+  entre "$fr" 'class="entete__haut"' 'class="entete__titre"' | grep -qF '<h1>' || fail "le nom doit être dans la première ligne de l'en-tête"
+  entre "$fr" 'class="entete__haut"' 'class="entete__titre"' | grep -qF 'class="langue"' || fail "le lien de langue doit être sur la même ligne que le nom"
+  # Il ne dépend ni de la légende ni du filtre.
+  export HUGO_PARAMS_FILTRE=true
+  build_ok langue-filtre tests/fixtures/valide OUT2
+  unset HUGO_PARAMS_FILTRE
+  assert_count "$OUT2/fr/index.html" 'class="langue"' 1
+  entre "$OUT2/fr/index.html" 'class="entete__haut"' 'class="entete__titre"' | grep -qF 'class="langue"' || fail "avec filtre, le lien de langue reste dans l'en-tête"
+}
+
+test_lien() {
+  # Le projet de la veille renvoie vers la veille publique, dans la langue du lecteur ; les autres tuiles n'ont pas de lien.
+  build_ok lien - OUT
+  assert_count "$OUT/fr/index.html" 'class="tuile__lien"' 1
+  assert_contains "$OUT/fr/index.html" 'href="https://veille.forge74.com/fr/"'
+  assert_contains "$OUT/fr/index.html" 'Lire la veille'
+  assert_count "$OUT/en/index.html" 'class="tuile__lien"' 1
+  assert_contains "$OUT/en/index.html" 'href="https://veille.forge74.com/en/"'
+  assert_contains "$OUT/en/index.html" 'Read the watch'
+  # Une clé de lien inconnue arrête la construction.
+  build_fails lien-inconnu tests/fixtures/lien-inconnu 'lien inconnu: inconnu'
+}
+
 test_securite() {
   build_ok securite tests/fixtures/valide OUT
   local h="$OUT/.htaccess"
