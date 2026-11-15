@@ -6,7 +6,8 @@
   <title>{{ site.Params.nom }} · {{ T "titre_pro" }}</title>
   <meta name="description" content="{{ T "positionnement" }}">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <link rel="stylesheet" href="/css/site.css">
+  {{- /* Empreinte du contenu dans l'adresse : chaque changement de style est vu tout de suite, malgré le cache. */}}
+  <link rel="stylesheet" href="/css/site.css?v={{ substr (readFile "static/css/site.css" | md5) 0 10 }}">
   {{- range .AllTranslations }}
   <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .RelPermalink }}">
   {{- end }}

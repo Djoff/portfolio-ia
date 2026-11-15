@@ -103,7 +103,11 @@ test_scaffold() {
   assert_contains "$OUT/fr/index.html" '<html lang="fr"'
   assert_contains "$OUT/en/index.html" '<html lang="en"'
   assert_contains "$OUT/fr/index.html" 'href="/en/"'
-  assert_contains "$OUT/fr/index.html" 'href="/css/site.css"'
+  # La feuille de style porte l'empreinte de son contenu : un changement de style
+  # change l'adresse, et les navigateurs ne gardent pas l'ancienne version en cache.
+  local empreinte
+  empreinte="$(md5sum "$ROOT/static/css/site.css" | cut -c1-10)"
+  assert_contains "$OUT/fr/index.html" "href=\"/css/site.css?v=${empreinte}\""
   assert_not_contains "$OUT/fr/index.html" '<script'
   assert_not_contains "$OUT/fr/index.html" 'style='
 }
