@@ -297,8 +297,8 @@ test_publication() {
 
 test_contenu() {
   build_ok contenu - OUT
-  assert_count "$OUT/fr/index.html" 'class="tuile"' 9
-  assert_count "$OUT/en/index.html" 'class="tuile"' 9
+  assert_count "$OUT/fr/index.html" 'class="tuile"' 10
+  assert_count "$OUT/en/index.html" 'class="tuile"' 10
   # Les textes des projets ne contiennent ni lien ni identifiant technique.
   local motif hits
   for motif in webhook api_key apikey chat_id 'http://' 'https://'; do
