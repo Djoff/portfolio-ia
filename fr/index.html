@@ -22,16 +22,120 @@
   <a class="entete__lien" href="https://www.linkedin.com/in/geoffrey-etwein/" rel="noopener noreferrer me">Profil LinkedIn</a>
 </header>
 <main>
-  <input type="radio" name="filtre" id="f-tous" class="filtre__choix" checked>
-<input type="radio" name="filtre" id="f-realise" class="filtre__choix">
-<input type="radio" name="filtre" id="f-en-cours" class="filtre__choix">
-<div class="filtre" role="group" aria-label="Filtrer par statut">
-  <label for="f-tous">Tous</label>
-  <label for="f-realise">Réalisé</label>
-  <label for="f-en-cours">En cours</label>
-</div>
-
   <section class="grille">
+    <details class="tuile" data-statut="realise">
+  <summary class="tuile__resume-bloc">
+    <span class="badge badge--realise">Réalisé</span>
+    <h2 class="tuile__titre">Sécuriser un serveur avec un assistant IA, sous supervision</h2>
+    <ul class="outils"><li>Claude Code</li><li>Hostinger</li><li>Tailscale</li><li>Healthchecks</li><li>Cron</li></ul>
+    <p class="tuile__resume">Un assistant IA a audité mon serveur Linux puis l&#39;a sécurisé étape par étape : il propose, je valide chaque action sensible.</p>
+    <ol class="schema schema--compact" aria-hidden="true">
+  <li class="etape etape--controle">✓ Instantané avant toute action</li>
+  <li class="etape etape--ia">Audit du serveur</li>
+  <li class="etape etape--ia">Plan d&#39;amélioration</li>
+  <li class="etape etape--controle">✓ Validation humaine</li>
+  <li class="etape etape--normal">Accès, pare-feu, comptes</li>
+  <li class="etape etape--controle">✓ Restauration testée</li>
+  <li class="etape etape--normal">Maintenance et alertes</li>
+</ol>
+
+  </summary>
+  <div class="tuile__corps">
+    <ol class="schema" aria-label="Étapes du projet">
+  <li class="etape etape--controle">✓ Instantané avant toute action</li>
+  <li class="etape etape--ia">Audit du serveur</li>
+  <li class="etape etape--ia">Plan d&#39;amélioration</li>
+  <li class="etape etape--controle">✓ Validation humaine</li>
+  <li class="etape etape--normal">Accès, pare-feu, comptes</li>
+  <li class="etape etape--controle">✓ Restauration testée</li>
+  <li class="etape etape--normal">Maintenance et alertes</li>
+</ol>
+
+    <section class="bloc bloc--probleme">
+      <h3>Problème</h3>
+      <p>Mon serveur héberge mes automatisations (n8n, Baserow), mais je maîtrise peu l&rsquo;administration Linux et les bonnes pratiques de sécurité. L&rsquo;audit l&rsquo;a confirmé : accès d&rsquo;administration ouvert à tout Internet, connexion par mot de passe acceptée, pare-feu inactif, deux comptes administrateurs et 62 mises à jour en attente.</p>
+    </section>
+    <section class="bloc bloc--solution">
+      <h3>Solution</h3>
+      <p>Un assistant IA de développement a pris la main sur le serveur, sous ma supervision. Il a d&rsquo;abord réalisé un audit en lecture seule, puis proposé un plan d&rsquo;amélioration, appliqué étape par étape après ma validation :</p>
+<ul>
+<li>accès d&rsquo;administration uniquement par un réseau privé, avec une clé et sans mot de passe ; les tentatives répétées sont bloquées automatiquement ;</li>
+<li>pare-feu actif : seuls le trafic web et le réseau privé passent ;</li>
+<li>un seul compte administrateur, le compte d&rsquo;origine étant désactivé ;</li>
+<li>sauvegardes hors site vérifiées chaque semaine, et restauration réellement testée ;</li>
+<li>mises à jour installées automatiquement tous les 15 jours, avec une alerte si une tâche échoue ou ne se lance pas.</li>
+</ul>
+    </section>
+    <section class="bloc bloc--risques">
+      <h3>Risques &amp; garde-fous</h3>
+      <ul>
+<li><strong>Action destructrice de l&rsquo;IA</strong> → l&rsquo;IA propose et j&rsquo;approuve chaque étape cruciale ; un instantané complet du serveur est pris avant toute modification.</li>
+<li><strong>Perte d&rsquo;accès au serveur</strong> → chaque nouvel accès est testé avant de fermer l&rsquo;ancien ; un accès de secours reste possible par la console de l&rsquo;hébergeur.</li>
+<li><strong>Fuite de secrets</strong> → aucun mot de passe ni aucune clé n&rsquo;est transmis à l&rsquo;IA : je les saisis moi-même dans le terminal.</li>
+<li><strong>Service interrompu</strong> → les scripts s&rsquo;arrêtent au moindre doute, sans rien modifier ; n8n et Baserow sont contrôlés après chaque étape.</li>
+<li><strong>Faux sentiment de sécurité</strong> → une sauvegarde n&rsquo;est jugée fiable qu&rsquo;après une vraie restauration ; une alerte se déclenche si une tâche automatique échoue ou se tait.</li>
+</ul>
+    </section>
+    <section class="bloc bloc--resultat">
+      <h3>Résultat</h3>
+      <p>En une séance, le serveur est passé d&rsquo;exposé à durci, sans interruption notable de service. Il se maintient désormais à jour tout seul, et je suis prévenu si quelque chose cloche.</p>
+    </section>
+    <section class="bloc bloc--lecons">
+      <h3>Ce que j&#39;en retiens</h3>
+      <p>Une IA peut compenser un manque de compétences techniques, à condition de garder la décision. En validant chaque étape, j&rsquo;ai aussi compris ce qui était fait, et pourquoi.</p>
+    </section>
+  </div>
+</details>
+
+    <details class="tuile" data-statut="realise">
+  <summary class="tuile__resume-bloc">
+    <span class="badge badge--realise">Réalisé</span>
+    <h2 class="tuile__titre">Ce site, sûr dès la conception</h2>
+    <ul class="outils"><li>Hugo</li><li>GitHub Actions</li><li>Claude Code</li><li>Hostinger</li></ul>
+    <p class="tuile__resume">Une vitrine de projets conçue avec un assistant IA de développement, en réduisant au minimum ce qui peut être attaqué.</p>
+    <ol class="schema schema--compact" aria-hidden="true">
+  <li class="etape etape--normal">Cadrage et cahier des charges</li>
+  <li class="etape etape--ia">Réalisation avec un assistant IA</li>
+  <li class="etape etape--controle">✓ Tests automatiques</li>
+  <li class="etape etape--controle">✓ Revue de sécurité</li>
+  <li class="etape etape--normal">Publication automatique en Europe</li>
+</ol>
+
+  </summary>
+  <div class="tuile__corps">
+    <ol class="schema" aria-label="Étapes du projet">
+  <li class="etape etape--normal">Cadrage et cahier des charges</li>
+  <li class="etape etape--ia">Réalisation avec un assistant IA</li>
+  <li class="etape etape--controle">✓ Tests automatiques</li>
+  <li class="etape etape--controle">✓ Revue de sécurité</li>
+  <li class="etape etape--normal">Publication automatique en Europe</li>
+</ol>
+
+    <section class="bloc bloc--probleme">
+      <h3>Problème</h3>
+      <p>Présenter mes projets à des recruteurs sans que la vitrine elle-même devienne un risque, au moment où les failles liées à l&rsquo;IA et à la chaîne logicielle se multiplient.</p>
+    </section>
+    <section class="bloc bloc--solution">
+      <h3>Solution</h3>
+      <p>Un site statique bilingue généré par Hugo : chaque projet est un simple fichier texte, vérifié automatiquement avant publication. Le site est conçu et réalisé avec un assistant IA de développement, encadré par un cahier des charges, des tests et une revue de sécurité. La publication est automatique : chaque modification est testée, puis mise en ligne sans intervention manuelle.</p>
+    </section>
+    <section class="bloc bloc--risques">
+      <h3>Risques &amp; garde-fous</h3>
+      <ul>
+<li><strong>Chaîne d&rsquo;approvisionnement logicielle</strong> → un seul outil de génération, sans dépendances npm ; versions figées et vérifiées par empreinte.</li>
+<li><strong>Injection de code (XSS)</strong> → aucun JavaScript et une politique de sécurité (CSP) qui interdit tout script.</li>
+<li><strong>Exposition de données</strong> → aucun formulaire, cookie ni traceur ; aucune donnée interne publiée, avec un contrôle automatique.</li>
+<li><strong>Code produit par l&rsquo;IA</strong> → chaque étape est testée avant d&rsquo;être acceptée, puis l&rsquo;ensemble est relu.</li>
+<li><strong>Mise en ligne d&rsquo;une version défaillante</strong> → la publication n&rsquo;a lieu que si tous les tests sont verts ; sinon, l&rsquo;ancienne version reste en ligne. L&rsquo;hébergeur lit le site publié, sans aucun accès en écriture au code.</li>
+</ul>
+    </section>
+    <section class="bloc bloc--resultat">
+      <h3>Résultat</h3>
+      <p>Site en ligne, noté A+ par securityheaders.com et Mozilla Observatory. Ajouter un projet revient à déposer un fichier texte : il est en ligne une à deux minutes plus tard.</p>
+    </section>
+  </div>
+</details>
+
     <details class="tuile" data-statut="realise">
   <summary class="tuile__resume-bloc">
     <span class="badge badge--realise">Réalisé</span>
@@ -243,54 +347,6 @@
     <section class="bloc bloc--lecons">
       <h3>Ce que j&#39;en retiens</h3>
       <p>La première version comptait 26 nœuds et était fragile ; la version simplifiée à 17 nœuds est plus simple à maintenir. Séparer « rédiger » et « vérifier » en deux agents distincts est un principe que je réutiliserais partout.</p>
-    </section>
-  </div>
-</details>
-
-    <details class="tuile" data-statut="en-cours">
-  <summary class="tuile__resume-bloc">
-    <span class="badge badge--en-cours">En cours</span>
-    <h2 class="tuile__titre">Ce site, sûr dès la conception</h2>
-    <ul class="outils"><li>Hugo</li><li>GitHub Actions</li><li>Claude Code</li><li>Hostinger</li></ul>
-    <p class="tuile__resume">Une vitrine de projets conçue avec un assistant IA de développement, en réduisant au minimum ce qui peut être attaqué.</p>
-    <ol class="schema schema--compact" aria-hidden="true">
-  <li class="etape etape--normal">Cadrage et cahier des charges</li>
-  <li class="etape etape--ia">Réalisation avec un assistant IA</li>
-  <li class="etape etape--controle">✓ Tests automatiques</li>
-  <li class="etape etape--controle">✓ Revue de sécurité</li>
-  <li class="etape etape--normal">Publication en Europe</li>
-</ol>
-
-  </summary>
-  <div class="tuile__corps">
-    <ol class="schema" aria-label="Étapes du projet">
-  <li class="etape etape--normal">Cadrage et cahier des charges</li>
-  <li class="etape etape--ia">Réalisation avec un assistant IA</li>
-  <li class="etape etape--controle">✓ Tests automatiques</li>
-  <li class="etape etape--controle">✓ Revue de sécurité</li>
-  <li class="etape etape--normal">Publication en Europe</li>
-</ol>
-
-    <section class="bloc bloc--probleme">
-      <h3>Problème</h3>
-      <p>Présenter mes projets à des recruteurs sans que la vitrine elle-même devienne un risque, au moment où les failles liées à l&rsquo;IA et à la chaîne logicielle se multiplient.</p>
-    </section>
-    <section class="bloc bloc--solution">
-      <h3>Solution</h3>
-      <p>Un site statique bilingue généré par Hugo : chaque projet est un simple fichier texte, vérifié automatiquement avant publication. Le site est conçu et réalisé avec un assistant IA de développement, encadré par un cahier des charges, des tests et une revue de sécurité.</p>
-    </section>
-    <section class="bloc bloc--risques">
-      <h3>Risques &amp; garde-fous</h3>
-      <ul>
-<li><strong>Chaîne d&rsquo;approvisionnement logicielle</strong> → un seul outil de génération, sans dépendances npm ; versions figées et vérifiées par empreinte.</li>
-<li><strong>Injection de code (XSS)</strong> → aucun JavaScript et une politique de sécurité (CSP) qui interdit tout script.</li>
-<li><strong>Exposition de données</strong> → aucun formulaire, cookie ni traceur ; aucune donnée interne publiée, avec un contrôle automatique.</li>
-<li><strong>Code produit par l&rsquo;IA</strong> → chaque étape est testée avant d&rsquo;être acceptée, puis l&rsquo;ensemble est relu.</li>
-</ul>
-    </section>
-    <section class="bloc bloc--resultat">
-      <h3>Résultat</h3>
-      <p>Site terminé et testé localement ; mise en ligne en Europe à venir.</p>
     </section>
   </div>
 </details>

@@ -22,16 +22,120 @@
   <a class="entete__lien" href="https://www.linkedin.com/in/geoffrey-etwein/" rel="noopener noreferrer me">LinkedIn profile</a>
 </header>
 <main>
-  <input type="radio" name="filtre" id="f-tous" class="filtre__choix" checked>
-<input type="radio" name="filtre" id="f-realise" class="filtre__choix">
-<input type="radio" name="filtre" id="f-en-cours" class="filtre__choix">
-<div class="filtre" role="group" aria-label="Filter by status">
-  <label for="f-tous">All</label>
-  <label for="f-realise">Done</label>
-  <label for="f-en-cours">In progress</label>
-</div>
-
   <section class="grille">
+    <details class="tuile" data-statut="realise">
+  <summary class="tuile__resume-bloc">
+    <span class="badge badge--realise">Done</span>
+    <h2 class="tuile__titre">Securing a server with an AI assistant, under supervision</h2>
+    <ul class="outils"><li>Claude Code</li><li>Hostinger</li><li>Tailscale</li><li>Healthchecks</li><li>Cron</li></ul>
+    <p class="tuile__resume">An AI assistant audited my Linux server, then secured it step by step: it proposes, I approve every sensitive action.</p>
+    <ol class="schema schema--compact" aria-hidden="true">
+  <li class="etape etape--controle">✓ Snapshot before any change</li>
+  <li class="etape etape--ia">Server audit</li>
+  <li class="etape etape--ia">Improvement plan</li>
+  <li class="etape etape--controle">✓ Human approval</li>
+  <li class="etape etape--normal">Access, firewall, accounts</li>
+  <li class="etape etape--controle">✓ Tested restore</li>
+  <li class="etape etape--normal">Maintenance and alerts</li>
+</ol>
+
+  </summary>
+  <div class="tuile__corps">
+    <ol class="schema" aria-label="Project steps">
+  <li class="etape etape--controle">✓ Snapshot before any change</li>
+  <li class="etape etape--ia">Server audit</li>
+  <li class="etape etape--ia">Improvement plan</li>
+  <li class="etape etape--controle">✓ Human approval</li>
+  <li class="etape etape--normal">Access, firewall, accounts</li>
+  <li class="etape etape--controle">✓ Tested restore</li>
+  <li class="etape etape--normal">Maintenance and alerts</li>
+</ol>
+
+    <section class="bloc bloc--probleme">
+      <h3>Problem</h3>
+      <p>My server hosts my automations (n8n, Baserow), but I have little experience with Linux administration and security best practices. The audit confirmed it: admin access open to the whole Internet, password logins accepted, an inactive firewall, two administrator accounts and 62 pending updates.</p>
+    </section>
+    <section class="bloc bloc--solution">
+      <h3>Solution</h3>
+      <p>An AI coding assistant took over the server under my supervision. It first ran a read-only audit, then proposed an improvement plan, applied step by step after my approval:</p>
+<ul>
+<li>admin access only through a private network, with a key and no password; repeated attempts are blocked automatically;</li>
+<li>an active firewall: only web traffic and the private network get through;</li>
+<li>a single administrator account, with the original account disabled;</li>
+<li>off-site backups checked every week, and a restore actually tested;</li>
+<li>updates installed automatically every 15 days, with an alert if a task fails or does not run.</li>
+</ul>
+    </section>
+    <section class="bloc bloc--risques">
+      <h3>Risks &amp; safeguards</h3>
+      <ul>
+<li><strong>Destructive AI action</strong> → the AI proposes and I approve every critical step; a full server snapshot is taken before any change.</li>
+<li><strong>Losing access to the server</strong> → every new access path is tested before the old one is closed; emergency access remains possible through the host&rsquo;s console.</li>
+<li><strong>Secret leakage</strong> → no password or key is ever given to the AI: I type them myself in the terminal.</li>
+<li><strong>Service outage</strong> → scripts stop at the slightest doubt, without changing anything; n8n and Baserow are checked after every step.</li>
+<li><strong>False sense of security</strong> → a backup only counts as reliable after a real restore; an alert fires if an automated task fails or goes silent.</li>
+</ul>
+    </section>
+    <section class="bloc bloc--resultat">
+      <h3>Outcome</h3>
+      <p>In a single session, the server went from exposed to hardened, with no noticeable service interruption. It now keeps itself up to date, and I am warned if something goes wrong.</p>
+    </section>
+    <section class="bloc bloc--lecons">
+      <h3>Lessons learned</h3>
+      <p>AI can make up for missing technical skills, as long as I keep the decision. By approving each step, I also understood what was being done, and why.</p>
+    </section>
+  </div>
+</details>
+
+    <details class="tuile" data-statut="realise">
+  <summary class="tuile__resume-bloc">
+    <span class="badge badge--realise">Done</span>
+    <h2 class="tuile__titre">This site, secure by design</h2>
+    <ul class="outils"><li>Hugo</li><li>GitHub Actions</li><li>Claude Code</li><li>Hostinger</li></ul>
+    <p class="tuile__resume">A project showcase built with an AI coding assistant, keeping the attack surface to a minimum.</p>
+    <ol class="schema schema--compact" aria-hidden="true">
+  <li class="etape etape--normal">Framing and specification</li>
+  <li class="etape etape--ia">Built with an AI assistant</li>
+  <li class="etape etape--controle">✓ Automated tests</li>
+  <li class="etape etape--controle">✓ Security review</li>
+  <li class="etape etape--normal">Automatic publishing in Europe</li>
+</ol>
+
+  </summary>
+  <div class="tuile__corps">
+    <ol class="schema" aria-label="Project steps">
+  <li class="etape etape--normal">Framing and specification</li>
+  <li class="etape etape--ia">Built with an AI assistant</li>
+  <li class="etape etape--controle">✓ Automated tests</li>
+  <li class="etape etape--controle">✓ Security review</li>
+  <li class="etape etape--normal">Automatic publishing in Europe</li>
+</ol>
+
+    <section class="bloc bloc--probleme">
+      <h3>Problem</h3>
+      <p>Showing my projects to recruiters without the showcase itself becoming a risk, at a time when AI-related and software supply-chain breaches are multiplying.</p>
+    </section>
+    <section class="bloc bloc--solution">
+      <h3>Solution</h3>
+      <p>A bilingual static site generated by Hugo: each project is a plain text file, checked automatically before publishing. The site is designed and built with an AI coding assistant, framed by a specification, tests and a security review. Publishing is automatic: every change is tested, then put online with no manual step.</p>
+    </section>
+    <section class="bloc bloc--risques">
+      <h3>Risks &amp; safeguards</h3>
+      <ul>
+<li><strong>Software supply chain</strong> → a single build tool with no npm dependencies; pinned versions verified by checksum.</li>
+<li><strong>Code injection (XSS)</strong> → no JavaScript, and a security policy (CSP) that forbids any script.</li>
+<li><strong>Data exposure</strong> → no forms, cookies or trackers; no internal data published, backed by an automated check.</li>
+<li><strong>AI-written code</strong> → every step is tested before it is accepted, then the whole is reviewed.</li>
+<li><strong>Publishing a broken version</strong> → publishing only happens when every test passes; otherwise the previous version stays online. The host reads the published site, with no write access to the code.</li>
+</ul>
+    </section>
+    <section class="bloc bloc--resultat">
+      <h3>Outcome</h3>
+      <p>Site live, rated A+ by securityheaders.com and Mozilla Observatory. Adding a project means adding a text file: it is online one or two minutes later.</p>
+    </section>
+  </div>
+</details>
+
     <details class="tuile" data-statut="realise">
   <summary class="tuile__resume-bloc">
     <span class="badge badge--realise">Done</span>
@@ -243,54 +347,6 @@
     <section class="bloc bloc--lecons">
       <h3>Lessons learned</h3>
       <p>The first version had 26 nodes and was fragile; the simplified 17-node version is easier to maintain. Splitting &ldquo;write&rdquo; and &ldquo;verify&rdquo; into two separate agents is a principle I would reuse everywhere.</p>
-    </section>
-  </div>
-</details>
-
-    <details class="tuile" data-statut="en-cours">
-  <summary class="tuile__resume-bloc">
-    <span class="badge badge--en-cours">In progress</span>
-    <h2 class="tuile__titre">This site, secure by design</h2>
-    <ul class="outils"><li>Hugo</li><li>GitHub Actions</li><li>Claude Code</li><li>Hostinger</li></ul>
-    <p class="tuile__resume">A project showcase built with an AI coding assistant, keeping the attack surface to a minimum.</p>
-    <ol class="schema schema--compact" aria-hidden="true">
-  <li class="etape etape--normal">Framing and specification</li>
-  <li class="etape etape--ia">Built with an AI assistant</li>
-  <li class="etape etape--controle">✓ Automated tests</li>
-  <li class="etape etape--controle">✓ Security review</li>
-  <li class="etape etape--normal">Hosting in Europe</li>
-</ol>
-
-  </summary>
-  <div class="tuile__corps">
-    <ol class="schema" aria-label="Project steps">
-  <li class="etape etape--normal">Framing and specification</li>
-  <li class="etape etape--ia">Built with an AI assistant</li>
-  <li class="etape etape--controle">✓ Automated tests</li>
-  <li class="etape etape--controle">✓ Security review</li>
-  <li class="etape etape--normal">Hosting in Europe</li>
-</ol>
-
-    <section class="bloc bloc--probleme">
-      <h3>Problem</h3>
-      <p>Showing my projects to recruiters without the showcase itself becoming a risk, at a time when AI-related and software supply-chain breaches are multiplying.</p>
-    </section>
-    <section class="bloc bloc--solution">
-      <h3>Solution</h3>
-      <p>A bilingual static site generated by Hugo: each project is a plain text file, checked automatically before publishing. The site is designed and built with an AI coding assistant, framed by a specification, tests and a security review.</p>
-    </section>
-    <section class="bloc bloc--risques">
-      <h3>Risks &amp; safeguards</h3>
-      <ul>
-<li><strong>Software supply chain</strong> → a single build tool with no npm dependencies; pinned versions verified by checksum.</li>
-<li><strong>Code injection (XSS)</strong> → no JavaScript, and a security policy (CSP) that forbids any script.</li>
-<li><strong>Data exposure</strong> → no forms, cookies or trackers; no internal data published, backed by an automated check.</li>
-<li><strong>AI-written code</strong> → every step is tested before it is accepted, then the whole is reviewed.</li>
-</ul>
-    </section>
-    <section class="bloc bloc--resultat">
-      <h3>Outcome</h3>
-      <p>Site finished and tested locally; European hosting coming next.</p>
     </section>
   </div>
 </details>
