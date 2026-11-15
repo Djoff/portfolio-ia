@@ -217,6 +217,19 @@ test_design() {
   assert_not_contains "$css" '@import'
 }
 
+test_lien() {
+  # Le projet de la veille renvoie vers la veille publique, dans la langue du lecteur ; les autres tuiles n'ont pas de lien.
+  build_ok lien - OUT
+  assert_count "$OUT/fr/index.html" 'class="tuile__lien"' 1
+  assert_contains "$OUT/fr/index.html" 'href="https://veille.forge74.com/fr/"'
+  assert_contains "$OUT/fr/index.html" 'Lire la veille'
+  assert_count "$OUT/en/index.html" 'class="tuile__lien"' 1
+  assert_contains "$OUT/en/index.html" 'href="https://veille.forge74.com/en/"'
+  assert_contains "$OUT/en/index.html" 'Read the watch'
+  # Une clé de lien inconnue arrête la construction.
+  build_fails lien-inconnu tests/fixtures/lien-inconnu 'lien inconnu: inconnu'
+}
+
 test_securite() {
   build_ok securite tests/fixtures/valide OUT
   local h="$OUT/.htaccess"

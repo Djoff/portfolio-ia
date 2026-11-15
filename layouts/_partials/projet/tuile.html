@@ -22,5 +22,8 @@
     </section>
     {{- end }}
     {{- end }}
+    {{- with .Params.lien }}
+    <p class="tuile__lien"><a href="{{ index (index site.Params.liens .) $lang }}" rel="noopener noreferrer">{{ T (printf "lien_%s" .) }} →</a></p>
+    {{- end }}
   </div>
 </details>

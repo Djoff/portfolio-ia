@@ -4,6 +4,7 @@ statut: "a-venir"            # realise | en-cours | a-venir | arrete (sans accen
 date: 2026-12-01             # AAAA-MM-JJ
 outils: ["n8n", "Baserow"]
 resume: "Une phrase qui dit ce que fait le projet."
+lien: "veille"               # facultatif : clé d'un lien déclaré dans hugo.toml, section [params.liens.*] (jamais d'adresse dans le texte)
 etapes:                      # au moins 2 ; type : normal | ia | controle
   - { nom: "Première étape", type: "normal" }
   - { nom: "Étape réalisée par l'IA", type: "ia" }

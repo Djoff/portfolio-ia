@@ -8,6 +8,9 @@
 {{- with $p.statut -}}
   {{- if not (in (slice "realise" "en-cours" "arrete" "a-venir") .) }}{{ errorf "%s: statut invalide: %s" $f . }}{{ end -}}
 {{- end -}}
+{{- with $p.lien -}}
+  {{- if not (index site.Params.liens .) }}{{ errorf "%s: lien inconnu: %s" $f . }}{{ end -}}
+{{- end -}}
 {{- $etapes := $p.etapes | default slice -}}
 {{- if lt (len $etapes) 2 }}{{ errorf "%s: au moins 2 etapes" $f }}{{ end -}}
 {{- range $etapes -}}

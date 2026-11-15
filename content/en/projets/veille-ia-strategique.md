@@ -1,6 +1,7 @@
 ---
 titre: "Strategic AI watch: governance, value and finance"
 statut: "realise"
+lien: "veille"
 date: 2026-10-11
 outils: ["Claude Code", "Scheduled task", "Web search", "Artifact"]
 resume: "Every week, an AI agent picks the few developments that change a decision or a deadline: AI value, agents, regulation, banking and finance."

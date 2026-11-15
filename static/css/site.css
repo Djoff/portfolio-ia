@@ -294,6 +294,11 @@ main,
   max-width: 48rem;
 }
 
+.tuile__lien {
+  margin: 1.25rem 0 0;
+  font-weight: 600;
+}
+
 /* ---------- Schéma des étapes ---------- */
 
 .schema {

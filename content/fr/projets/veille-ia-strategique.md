@@ -1,6 +1,7 @@
 ---
 titre: "Veille stratégique IA : gouvernance, valeur et finance"
 statut: "realise"
+lien: "veille"
 date: 2026-10-11
 outils: ["Claude Code", "Tâche planifiée", "Recherche web", "Artifact"]
 resume: "Chaque semaine, un agent IA retient les quelques évolutions qui changent une décision ou une échéance : valeur de l'IA, agents, réglementation, banque et finance."

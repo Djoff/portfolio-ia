@@ -30,6 +30,11 @@ ignoreLogs = ["warning-goldmark-raw-html"]
   # Filtre par statut au-dessus des tuiles : à activer (true) quand il y aura plus de projets.
   filtre = false
 
+# Liens de projet : un projet les choisit par sa clé (champ « lien »), l'adresse reste ici, hors des textes.
+[params.liens.veille]
+  fr = "https://veille.forge74.com/fr/"
+  en = "https://veille.forge74.com/en/"
+
 # Les projets n'ont pas de page propre : ils ne s'affichent que sous forme de tuiles.
 [[cascade]]
   [cascade.build]
