@@ -1,6 +1,0 @@
-{{- /* Lien vers l'autre langue, cadré à droite de la ligne qui le porte (légende ou filtre). */ -}}
-<nav class="langue">
-  {{- range page.Translations }}
-  <a href="{{ .RelPermalink }}" hreflang="{{ .Language.Lang }}" lang="{{ .Language.Lang }}">{{ T "autre_langue" }}</a>
-  {{- end }}
-</nav>

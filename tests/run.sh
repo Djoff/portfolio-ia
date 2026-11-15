@@ -217,36 +217,6 @@ test_design() {
   assert_not_contains "$css" '@import'
 }
 
-# Texte du fichier $1 entre la première ligne contenant $2 et la première ligne contenant $3.
-entre() {
-  sed -n "/$2/,/$3/p" "$1"
-}
-
-test_langue() {
-  # Le lien de langue n'a plus sa propre ligne : il est à droite de la ligne de la légende
-  # (ou de celle du filtre, quand il est activé), jamais avant l'en-tête.
-  build_ok langue tests/fixtures/valide OUT
-  local fr="$OUT/fr/index.html" en="$OUT/en/index.html"
-  assert_count "$fr" 'class="langue"' 1
-  assert_count "$en" 'class="langue"' 1
-  assert_contains "$fr" 'hreflang="en" lang="en">English</a>'
-  assert_contains "$en" 'hreflang="fr" lang="fr">Français</a>'
-  local h l
-  h="$(grep -n '<header class="entete">' "$fr" | head -1 | cut -d: -f1)"
-  l="$(grep -n 'class="langue"' "$fr" | head -1 | cut -d: -f1)"
-  [ -n "$h" ] && [ -n "$l" ] && [ "$l" -gt "$h" ] || fail "le lien de langue ne doit pas précéder l'en-tête"
-  entre "$fr" 'class="legende"' 'class="grille"' | grep -qF 'class="langue"' || fail "sans filtre, le lien de langue doit être sur la ligne de la légende"
-  # Filtre activé : le lien rejoint la ligne du filtre, et la légende n'en a plus.
-  export HUGO_PARAMS_FILTRE=true
-  build_ok langue-filtre tests/fixtures/valide OUT2
-  unset HUGO_PARAMS_FILTRE
-  assert_count "$OUT2/fr/index.html" 'class="langue"' 1
-  entre "$OUT2/fr/index.html" 'class="filtre"' 'class="legende"' | grep -qF 'class="langue"' || fail "avec filtre, le lien de langue doit être sur la ligne du filtre"
-  if entre "$OUT2/fr/index.html" 'class="legende"' 'class="grille"' | grep -qF 'class="langue"'; then
-    fail "avec filtre, la légende ne doit plus porter le lien de langue"
-  fi
-}
-
 test_lien() {
   # Le projet de la veille renvoie vers la veille publique, dans la langue du lecteur ; les autres tuiles n'ont pas de lien.
   build_ok lien - OUT

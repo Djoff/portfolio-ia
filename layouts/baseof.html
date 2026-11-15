@@ -13,6 +13,11 @@
   {{- end }}
 </head>
 <body>
+  <nav class="langue">
+    {{- range .Translations }}
+    <a href="{{ .RelPermalink }}" hreflang="{{ .Language.Lang }}" lang="{{ .Language.Lang }}">{{ T "autre_langue" }}</a>
+    {{- end }}
+  </nav>
   {{ block "main" . }}{{ end }}
 </body>
 </html>

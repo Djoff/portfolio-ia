@@ -6,12 +6,9 @@
 {{- range $statuts }}
 <input type="radio" name="filtre" id="f-{{ . }}" class="filtre__choix">
 {{- end }}
-<div class="filtre">
-  <div class="filtre__boutons" role="group" aria-label="{{ T "filtre_titre" }}">
-    <label for="f-tous">{{ T "filtre_tous" }}</label>
-    {{- range $statuts }}
-    <label for="f-{{ . }}">{{ T (printf "statut_%s" .) }}</label>
-    {{- end }}
-  </div>
-  {{ partial "langue.html" . }}
+<div class="filtre" role="group" aria-label="{{ T "filtre_titre" }}">
+  <label for="f-tous">{{ T "filtre_tous" }}</label>
+  {{- range $statuts }}
+  <label for="f-{{ . }}">{{ T (printf "statut_%s" .) }}</label>
+  {{- end }}
 </div>
