@@ -174,7 +174,7 @@ test_validation() {
 
 - [ ] **Step 1: Add tests** (against `tests/fixtures/valide`): `assert_count fr/index.html 'class="tuile"' 2`; first tile has `data-statut="realise"`; `class="etape etape--controle"` present and contains `✓`; `class="bloc bloc--risques"` present; `bloc--lecons` absent for the `a-venir` project; EN page shows `Problem` not `Problème`; header contains `site.Params.nom` and the LinkedIn href.
 - [ ] **Step 2: Run** → FAIL.
-- [ ] **Step 3: Implement** partials and `index.html`; add i18n labels (FR/EN) for badges, header and footer. Positioning text first draft: FR « Chef de projet IT, je pilote l'adoption de l'IA en entreprise : cadrage produit, gouvernance, maîtrise des risques. Ces projets montrent comment je conçois, teste et sécurise des usages concrets de l'IA. » — EN equivalent. Mark it as draft for Geoffrey's review.
+- [ ] **Step 3: Implement** partials and `index.html`; add i18n labels (FR/EN) for badges, header and footer. Positioning text first draft: FR « Je pilote l'adoption de l'IA en entreprise : cadrage produit, gouvernance, maîtrise des risques. Ces projets montrent comment je conçois, teste et sécurise des usages concrets de l'IA. » — EN equivalent. Mark it as draft for Geoffrey's review.
 - [ ] **Step 4: Run** → all pass.
 - [ ] **Step 5: Commit** — `feat: tuiles, schémas et structure de page`.
 

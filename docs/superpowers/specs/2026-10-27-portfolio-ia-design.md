@@ -5,7 +5,7 @@ Statut : en relecture
 
 ## 1. Objectif
 
-Geoffrey, chef de projet IT généraliste, se spécialise en **stratégie et gouvernance de l'IA** (usage de l'IA, pas entraînement de modèles). Postes visés : Head of AI Product, AI Product Manager, responsable gouvernance IA.
+Geoffrey pilote l'adoption de l'IA en entreprise et se spécialise en **stratégie et gouvernance de l'IA** (usage de l'IA, pas entraînement de modèles). Postes visés : Head of AI Product, AI Product Manager, responsable gouvernance IA.
 
 Il veut une page web, partageable avec des recruteurs, qui présente sous forme de tuiles ses projets IA et d'automatisation — réalisés, en cours et à venir — et qui se met à jour facilement à mesure que des projets plus complexes arrivent.
 
