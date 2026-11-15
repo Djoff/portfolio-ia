@@ -12,6 +12,7 @@
   {{- if site.Params.filtre }}
   {{ partial "filtre.html" $projets }}
   {{- end }}
+  {{ partial "legende.html" . }}
   <section class="grille">
     {{- range $statut := slice "realise" "en-cours" "arrete" "a-venir" }}
     {{- range sort (where $projets "Params.statut" $statut) "Date" "desc" }}

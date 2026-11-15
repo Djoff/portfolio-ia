@@ -158,6 +158,25 @@ test_statut_arrete() {
   build_fails arrete-sans-resultat tests/fixtures/arrete-sans-resultat 'section obligatoire manquante: Résultat'
 }
 
+test_legende() {
+  # Une seule légende par page, avec les trois types d'étapes, dans chaque langue.
+  build_ok legende tests/fixtures/valide OUT
+  local fr="$OUT/fr/index.html" en="$OUT/en/index.html"
+  assert_count "$fr" 'class="legende"' 1
+  assert_count "$en" 'class="legende"' 1
+  assert_contains "$fr" '<span class="etape etape--ia">Étape réalisée par l&#39;IA</span>'
+  assert_contains "$fr" '<span class="etape etape--controle">✓ Contrôle ou garde-fou</span>'
+  assert_contains "$fr" '<span class="etape etape--normal">Étape standard</span>'
+  assert_contains "$en" '<span class="etape etape--ia">Step performed by AI</span>'
+  assert_contains "$en" '<span class="etape etape--controle">✓ Check or safeguard</span>'
+  assert_contains "$en" '<span class="etape etape--normal">Standard step</span>'
+  # Placée avant les tuiles.
+  local l t
+  l="$(grep -n 'class="legende"' "$fr" | head -1 | cut -d: -f1)"
+  t="$(grep -n 'class="tuile"' "$fr" | head -1 | cut -d: -f1)"
+  [ -n "$l" ] && [ -n "$t" ] && [ "$l" -lt "$t" ] || fail "la légende doit précéder les tuiles"
+}
+
 test_filtre() {
   # Désactivé par défaut (params.filtre = false) : ni boutons ni groupe.
   build_ok sans-filtre tests/fixtures/valide OUT0
