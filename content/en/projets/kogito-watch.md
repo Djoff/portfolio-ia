@@ -1,6 +1,6 @@
 ---
 titre: "Kogito Watch"
-statut: "realise"
+statut: "arrete"
 date: 2026-09-29
 outils: ["n8n", "Baserow", "OpenRouter", "Gmail"]
 resume: "Automated news monitoring: an AI agent reads news feeds, keeps what matters and sends a digest."
@@ -31,7 +31,7 @@ A scheduled workflow reads the sources listed in a Baserow database, drops artic
 
 ## Outcome
 
-Daily monitoring that runs on its own, with a record of every AI decision.
+Daily monitoring that runs on its own, with a record of every AI decision. The workflow was later shut down because I stopped this monitoring: it remains a complete, documented example of a monitoring agent.
 
 ## Lessons learned
 

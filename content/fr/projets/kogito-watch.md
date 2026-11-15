@@ -1,6 +1,6 @@
 ---
 titre: "Kogito Watch"
-statut: "realise"
+statut: "arrete"
 date: 2026-09-29
 outils: ["n8n", "Baserow", "OpenRouter", "Gmail"]
 resume: "Une veille automatisée : un agent IA lit les flux d'actualité, retient l'essentiel et envoie un digest."
@@ -31,7 +31,7 @@ Un workflow planifié lit les sources déclarées dans une base Baserow, écarte
 
 ## Résultat
 
-Une veille quotidienne qui tourne seule, avec une trace de chaque décision de l'IA.
+Une veille quotidienne qui tourne seule, avec une trace de chaque décision de l'IA. Le workflow a ensuite été arrêté, parce que j'ai mis fin à cette veille : il reste un exemple complet et documenté d'agent de veille.
 
 ## Ce que j'en retiens
 
